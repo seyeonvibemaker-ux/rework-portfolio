@@ -1,0 +1,7 @@
+{
+  "redirects": [
+    { "source": "/", "destination": "/portfolio", "permanent": false },
+    { "source": "/index.html", "destination": "/portfolio", "permanent": true },
+    { "source": "/consult.html", "destination": "/lead", "permanent": true }
+  ]
+}
