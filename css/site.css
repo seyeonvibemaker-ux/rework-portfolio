@@ -315,3 +315,5 @@ a:focus-visible,summary:focus-visible{outline:2px solid var(--red);outline-offse
 .flow-line li{display:flex;align-items:center;gap:8px;}
 .flow-line li:not(:last-child)::after{content:"→";margin:0 6px 0 4px;color:var(--muted);font-weight:400;}
 .flow-line .num{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--black);color:var(--cream);font-size:12px;}
+
+.site-foot__privacy{color:var(--on-black);font-weight:700;}

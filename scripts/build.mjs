@@ -195,7 +195,7 @@ function footer() {
     </div>
     <div class="site-foot__bottom">
       <span>대표 정세연 · <a href="tel:01037275522">010-3727-5522</a> · <a href="mailto:rework_studio@naver.com">rework_studio@naver.com</a></span>
-      <span>© 2026 RE:WORK STUDIO</span>
+      <span><a class="site-foot__privacy" href="/privacy">개인정보처리방침</a> · © 2026 RE:WORK STUDIO</span>
     </div>
   </div>
 </footer>`;
@@ -554,6 +554,24 @@ ${ctaBand()}
 `));
 }
 
+// ---------- 개인정보처리방침 ----------
+write('privacy/index.html', page({ title: `개인정보처리방침 | ${BRAND}`, description: 'RE:WORK STUDIO 개인정보처리방침. 무료 계정 분석 신청서와 홈페이지 방문 분석에서 처리하는 개인정보 항목, 목적, 보관 기간, 위탁, 국외 이전, 이용자 권리를 안내합니다.', path: '/privacy', cls: 'page--article', active: '' }, `
+<article class="article">
+  <header class="article__head">
+    <div class="wrap wrap--narrow">
+      <nav class="crumbs" aria-label="현재 위치"><a href="/">홈</a><span>/</span><span>개인정보처리방침</span></nav>
+      <h1 class="article__title">개인정보처리방침</h1>
+      <div class="article__byline"><span>시행일 2026년 11월 3일</span></div>
+    </div>
+  </header>
+  <div class="wrap wrap--narrow article__body-wrap">
+    <div class="prose">
+${readFileSync(join(ROOT, 'content', 'partials', 'privacy.html'), 'utf8')}
+    </div>
+  </div>
+</article>
+`));
+
 // ---------- 블로그 목록 ----------
 write('insights/index.html', page({ title: `블로그 | 인스타·브랜딩 고민을 쉽게 풀어 드려요 | ${BRAND}`, description: '코치·상담사·원장님의 인스타·브랜딩 고민을 쉬운 말로 풀어 드려요. 연구와 공식 자료를 근거로, 바로 해 볼 수 있는 방법만 담았어요.', path: '/insights', cls: 'page--sub', active: 'insights',
   extra: jsonld({ '@context': 'https://schema.org', '@graph': [
@@ -586,6 +604,7 @@ ${ctaBand()}
     { loc: '/portfolio', lastmod: today, pr: '0.9' },
     { loc: '/about', lastmod: today, pr: '0.8' },
     { loc: '/lead', lastmod: today, pr: '0.8' },
+    { loc: '/privacy', lastmod: '2026-11-03', pr: '0.3' },
     { loc: '/insights', lastmod: posts[0]?.date || today, pr: '0.8' },
     ...posts.map(p => ({ loc: p.path, lastmod: p.updated || p.date, pr: '0.7' })),
   ];
