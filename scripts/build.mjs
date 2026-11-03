@@ -157,7 +157,7 @@ ${extra}
 </head>`;
 }
 
-const MENU = [['/about', '회사 소개', 'about'], ['/services', '서비스', 'services'], ['/work', '작업 사례', 'work'], ['/insights', '블로그', 'insights']];
+const MENU = [['/about', '회사 소개', 'about'], ['/services', '서비스', 'services'], ['/portfolio', '포트폴리오', 'portfolio'], ['/insights', '블로그', 'insights']];
 function nav(active = '') {
   const links = MENU.map(([h, l, k]) => `<a href="${h}"${active === k ? ' aria-current="page"' : ''}>${l}</a>`).join('');
   return `<header class="site-nav" id="site-nav">
@@ -181,7 +181,7 @@ function footer() {
         <p class="site-foot__desc">전문직과 1인 대표님을 위한<br>SNS 콘텐츠 기획·제작 스튜디오</p>
       </div>
       <nav class="site-foot__links" aria-label="하단 메뉴">
-        <a href="/about">회사 소개</a><a href="/services">서비스</a><a href="/work">작업 사례</a><a href="/insights">블로그</a><a href="/lead">무료 계정 분석</a>
+        <a href="/about">회사 소개</a><a href="/services">서비스</a><a href="/portfolio">포트폴리오</a><a href="/insights">블로그</a><a href="/lead">무료 계정 분석</a>
       </nav>
       <div class="site-foot__links">
         <a href="${INSTA}" target="_blank" rel="noopener">인스타그램</a>
@@ -298,7 +298,7 @@ const card = (p) => `<a class="post-card" href="${p.path}">
     <p class="home-hero__lede">대표님도 몰랐던 강점을 찾아, 기획부터 제작까지 함께 해요.</p>
     <div class="home-hero__actions">
       <a class="btn btn--red" href="/lead">무료 계정 분석 받기</a>
-      <a class="btn btn--ghost" href="/work">작업 사례 보기</a>
+      <a class="btn btn--ghost" href="/portfolio">포트폴리오 보기</a>
     </div>
     <dl class="home-hero__proof">
       <div><dt class="num">200만+</dt><dd>만든 콘텐츠 누적 조회수</dd></div>
@@ -321,7 +321,7 @@ const card = (p) => `<a class="post-card" href="${p.path}">
 
 <section class="chapter chapter--dark">
   <div class="wrap">
-    ${secHead('작업 사례', '광고비 없이 만든 <span class="hl">결과</span>예요', ['/work', '사례 12편 모두 보기'])}
+    ${secHead('포트폴리오', '광고비 없이 만든 <span class="hl">결과</span>예요', ['/portfolio', '포트폴리오 전체 보기'])}
     <div class="proof-grid">
       ${proof('https://www.instagram.com/p/DayqhlbE3a7/', 'img-01.jpg', '댓글 8,000개', '부모교육 코치')}
       ${proof('https://www.instagram.com/youandme_colorlab/reel/DV08MF-gbQ9/', 'img-04.jpg', '조회수 37.6만', '어린이집 원장')}
@@ -407,7 +407,7 @@ ${subHero('회사 소개', '대표님의 이야기를<br><span>콘텐츠로</spa
 
 <section class="chapter">
   <div class="wrap">
-    ${secHead('함께한 브랜드', '이런 분들과 <span class="hl">함께했어요</span>', ['/work', '작업 사례 보기'])}
+    ${secHead('함께한 브랜드', '이런 분들과 <span class="hl">함께했어요</span>', ['/portfolio', '포트폴리오 보기'])}
     <ul class="brand-list">${BRANDS.map(([n, d]) => `<li><b>${n}</b><span>${d}</span></li>`).join('')}</ul>
   </div>
 </section>
@@ -471,11 +471,11 @@ ${finalCta('어떤 구성이 맞을지 모르겠다면<br><span class="line2">�
 `));
 }
 
-// ---------- 작업 사례 ----------
+// ---------- 포트폴리오 ----------
 {
   const cases = readFileSync(join(ROOT, 'content', 'partials', 'work-cases.html'), 'utf8');
-  write('work/index.html', page({ title: `작업 사례 | 광고 없이 만든 인스타 콘텐츠 | ${BRAND}`, description: '부모교육 코치, 어린이집 원장, 부부관계 상담가, 아동 미술치료 대표님과 만든 릴스·카드뉴스. 광고 없이 누적 조회수 200만+.', path: '/work', extra: jsonld({ '@context': 'https://schema.org', '@graph': [ORG] }), cls: 'page--sub page--work', active: 'work' }, `
-${subHero('작업 사례', '광고비 없이 만든<br><span>결과</span>예요.', '모두 대표님 이야기로 만든 콘텐츠예요. 카드를 누르면 실제 게시물로 가요.')}
+  write('portfolio/index.html', page({ title: `포트폴리오 | 광고 없이 만든 인스타 콘텐츠 | ${BRAND}`, description: '부모교육 코치, 어린이집 원장, 부부관계 상담가, 아동 미술치료 대표님과 만든 릴스·카드뉴스. 광고 없이 누적 조회수 200만+.', path: '/portfolio', extra: jsonld({ '@context': 'https://schema.org', '@graph': [ORG] }), cls: 'page--sub page--work', active: 'portfolio' }, `
+${subHero('포트폴리오', '광고비 없이 만든<br><span>결과</span>예요.', '모두 대표님 이야기로 만든 콘텐츠예요. 카드를 누르면 실제 게시물로 가요.')}
 
 <section class="chapter">
   <div class="wrap">
@@ -577,7 +577,7 @@ ${ctaBand()}
   const urls = [
     { loc: '/', lastmod: today, pr: '1.0' },
     { loc: '/services', lastmod: today, pr: '0.9' },
-    { loc: '/work', lastmod: today, pr: '0.9' },
+    { loc: '/portfolio', lastmod: today, pr: '0.9' },
     { loc: '/about', lastmod: today, pr: '0.8' },
     { loc: '/lead', lastmod: today, pr: '0.8' },
     { loc: '/insights', lastmod: posts[0]?.date || today, pr: '0.8' },
@@ -610,7 +610,7 @@ ${posts.map(p => `<item><title>${esc(p.title)}</title><link>${SITE}${p.path}</li
 // ---------- 쉬운 말 검사: 화면에 보이는 글에 어려운 말이 있으면 경고 ----------
 {
   const HARD = ['언어화', '퍼널', '동선', '전환율', '내러티브', '운송', '서사', '구조화', '시그니처', 'end-to-end', '프로파일', '리드', '어트리뷰션', '인지 단계', '자산화'];
-  const pages = ['index.html', 'about/index.html', 'services/index.html', 'work/index.html', 'insights/index.html', 'lead/index.html', ...posts.map(p => `insights/${p.slug}/index.html`)];
+  const pages = ['index.html', 'about/index.html', 'services/index.html', 'portfolio/index.html', 'insights/index.html', 'lead/index.html', ...posts.map(p => `insights/${p.slug}/index.html`)];
   let warn = 0;
   for (const rel of pages) {
     const f = join(ROOT, rel); if (!existsSync(f)) continue;
