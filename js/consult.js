@@ -14,6 +14,7 @@ var form = document.getElementById('f');
   function succeed() {
     if (settled) return;
     settled = true;
+    if (window.gtag) gtag('event', 'generate_lead', { form_name: 'free_account_analysis' });
     form.style.display = 'none';
     document.getElementById('done').style.display = 'block';
     window.scrollTo({ top: 0, behavior: 'smooth' });

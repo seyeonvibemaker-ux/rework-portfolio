@@ -13,6 +13,7 @@ const KAKAO = 'https://pf.kakao.com/_xdxjbCX';
 const INSTA = 'https://www.instagram.com/rework_studio99/';
 const NAVER_BLOG = 'https://blog.naver.com/rework_studio';
 const FONTS = 'https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Gothic+A1:wght@700;800;900&family=Noto+Sans+KR:wght@400;500;700&display=swap';
+const ANALYTICS = "<!-- analytics -->\n<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>\n<script defer src=\"/_vercel/insights/script.js\"></script>\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=G-SNV7HETFL5\"></script>\n<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-SNV7HETFL5');</script>";
 
 // ---------- utils ----------
 const esc = (s = '') => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -156,6 +157,7 @@ function head({ title, description, path, type = 'website', image = '/images/og-
 <link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/css/site.css">
 ${extra}
+${ANALYTICS}
 </head>`;
 }
 
@@ -571,6 +573,7 @@ ${ctaBand()}
   const f = join(ROOT, 'lead', 'index.html');
   let h = readFileSync(f, 'utf8');
   h = h.replace(/<header class="site-nav"[\s\S]*?<\/header>/, nav('lead'));
+  if (!h.includes('<!-- analytics -->')) h = h.replace('</head>', ANALYTICS + '\n</head>');
   writeFileSync(f, h, 'utf8');
 }
 
