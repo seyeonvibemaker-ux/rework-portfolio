@@ -146,6 +146,8 @@ function head({ title, description, path, type = 'website', image = '/images/og-
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0F0F0F">
+<meta name="google-site-verification" content="v3fNLwtkdVQPlgarLbiVW8clAr4Ra_K3E5ATx12H4wE">
+<meta name="naver-site-verification" content="1fd86cd4a57c1fd9f72b173e4379241b2b30e0e6">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="alternate" type="application/rss+xml" title="${BRAND} 블로그" href="${SITE}/insights/feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
