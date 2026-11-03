@@ -23,15 +23,15 @@
 <link rel="stylesheet" href="/css/site.css">
 </head>
 <body class="has-nav">
-<header class="site-nav">
+<header class="site-nav" id="site-nav">
   <div class="site-nav__in">
     <a class="site-nav__logo" href="/" aria-label="RE:WORK STUDIO 홈">RE:WORK<span>STUDIO</span></a>
-    <nav class="site-nav__links" aria-label="주요 메뉴">
-      <a href="/portfolio"><span class="nav-lg">서비스·포트폴리오</span><span class="nav-sm">서비스</span></a>
-      <a href="/insights">블로그</a>
-      <a class="site-nav__cta" href="/lead">무료<span class="nav-lg"> 계정</span> 분석</a>
-    </nav>
+    <nav class="site-nav__links" aria-label="주요 메뉴"><a href="/about">회사 소개</a><a href="/services">서비스</a><a href="/work">작업 사례</a><a href="/insights">블로그</a></nav>
+    <a class="site-nav__cta" href="/lead">무료 계정 분석</a>
+    <button class="site-nav__toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="site-nav-panel"><span></span><span></span></button>
   </div>
+  <nav class="site-nav__panel" id="site-nav-panel" aria-label="모바일 메뉴"><a href="/about">회사 소개</a><a href="/services">서비스</a><a href="/work">작업 사례</a><a href="/insights">블로그</a><a class="site-nav__panel-cta" href="/lead">무료 계정 분석 받기</a></nav>
+  <script>(function(){var h=document.getElementById('site-nav'),b=h.querySelector('.site-nav__toggle');b.addEventListener('click',function(){var o=h.classList.toggle('is-open');b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'메뉴 닫기':'메뉴 열기');});})();</script>
 </header>
 
 <div class="hero">

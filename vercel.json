@@ -2,8 +2,31 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/:path*", "has": [{ "type": "host", "value": "www.reworkstudio.net" }], "destination": "https://reworkstudio.net/:path*", "permanent": true },
-    { "source": "/index.html", "destination": "/", "permanent": true },
-    { "source": "/consult.html", "destination": "/lead", "permanent": true }
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.reworkstudio.net"
+        }
+      ],
+      "destination": "https://reworkstudio.net/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/consult.html",
+      "destination": "/lead",
+      "permanent": true
+    }
   ]
 }
