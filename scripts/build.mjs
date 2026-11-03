@@ -107,17 +107,17 @@ const STEPS = [
   ['월간 리포트', '조회수와 팔로워 변화를 매달 정리해 드려요'],
 ];
 const BRANDS = [
-  ['움트리', '48년 된 식품 제조사 · 마케팅 전체 대행'],
+  ['48년 업력 식품 제조사', '마케팅 전체 대행'],
   ['뉴로인사이트', '뇌파훈련 브랜드 · 이름·로고부터 채널 기획'],
   ['제이미컬러랩', '컬러기질·뇌과학 기반 부모교육'],
   ['유앤미컬러랩', '유아교육 원장의 기질 상담 콘텐츠'],
   ['MJ관계연구소', '부부관계 회복 전문가 브랜딩'],
   ['마음색 작업실', '감정미술·사춘기 미술치료'],
   ['싸커맘 멘탈코치', '스포츠 멘탈코칭 브랜드'],
-  ['황재성 원장', '국공립 어린이집 원장 · 교육 현장 콘텐츠'],
+  ['어린이집 원장', '국공립 어린이집 · 교육 현장 콘텐츠'],
 ];
 const FAQ = [
-  { q: '어떤 대표님과 일하나요?', a: '코치, 상담사, 학원·어린이집·필라테스 원장님처럼 실력은 있는데 인스타에서 잘 알려지지 않은 1인 대표님과 일해요.' },
+  { q: '어떤 대표님과 일하나요?', a: '코치, 상담사, 원장님 같은 전문직과 1인 대표님과 일해요. 실력은 있는데 SNS에서 잘 알려지지 않았다면 잘 맞아요.' },
   { q: '무료 계정 분석은 뭘 해 주나요?', a: '대표님 계정을 직접 보고 첫인상, 반응이 없는 이유, 다음에 올릴 콘텐츠 3가지를 정리해 드려요. 3영업일 안에 리포트로 보내 드리고, 원하시면 15분 통화도 해요.' },
   { q: '제가 직접 찍어야 하나요?', a: '직접 촬영(100만원)은 대표님이 찍고 저희가 촬영 가이드를 드려요. 방문 촬영과 세팅 촬영은 PD가 찾아가서 찍어요.' },
   { q: '기간은 얼마나 걸리고, 업로드도 해 주나요?', a: '진행 기간과 업로드 대행 여부는 계약 전에 대표님 일정에 맞춰 정해요.' },
@@ -178,7 +178,7 @@ function footer() {
     <div class="site-foot__top">
       <div>
         <div class="site-foot__brand">RE:WORK STUDIO</div>
-        <p class="site-foot__desc">코치·상담사·원장님을 위한<br>인스타 콘텐츠 제작 스튜디오</p>
+        <p class="site-foot__desc">전문직과 1인 대표님을 위한<br>SNS 콘텐츠 기획·제작 스튜디오</p>
       </div>
       <nav class="site-foot__links" aria-label="하단 메뉴">
         <a href="/about">회사 소개</a><a href="/services">서비스</a><a href="/work">작업 사례</a><a href="/insights">블로그</a><a href="/lead">무료 계정 분석</a>
@@ -237,7 +237,7 @@ const ORG = {
   url: `${SITE}/`,
   image: `${SITE}/images/og-default.png`,
   logo: `${SITE}/favicon.svg`,
-  description: '코치·상담사·원장님 같은 1인 대표님의 이야기를 인터뷰해 릴스 대본, 촬영, 편집까지 만들어 문의가 오는 인스타를 만드는 콘텐츠 제작 스튜디오',
+  description: '전문직과 1인 대표님을 위한 SNS 콘텐츠 기획·제작 스튜디오. 대표님 이야기를 인터뷰해 릴스 대본, 촬영, 편집까지 만들어 문의가 오는 SNS를 만듭니다.',
   email: 'rework_studio@naver.com',
   telephone: '+82-10-3727-5522',
   areaServed: 'KR',
@@ -290,10 +290,10 @@ const card = (p) => `<a class="post-card" href="${p.path}">
   const ld = { '@context': 'https://schema.org', '@graph': [
     { '@type': 'WebSite', '@id': `${SITE}/#website`, name: BRAND, url: `${SITE}/`, inLanguage: 'ko-KR', publisher: { '@id': `${SITE}/#org` } },
     ORG, PERSON ] };
-  write('index.html', page({ title: `${BRAND} | 코치·상담사·원장님을 위한 인스타 콘텐츠 제작`, description: '실력은 있는데 인스타에서 문의가 없는 대표님께. 인터뷰, 대본, 촬영, 편집까지 함께 해서 문의가 오는 인스타를 만듭니다. 무료 계정 분석 신청 가능.', path: '/', extra: jsonld(ld), cls: 'page--home', active: 'home' }, `
+  write('index.html', page({ title: `${BRAND} | 전문직과 1인 대표님을 위한 SNS 콘텐츠 기획·제작 스튜디오`, description: '전문직과 1인 대표님을 위한 SNS 콘텐츠 기획·제작 스튜디오. 인터뷰, 대본, 촬영, 편집까지 함께 해서 문의가 오는 인스타를 만듭니다. 무료 계정 분석 신청 가능.', path: '/', extra: jsonld(ld), cls: 'page--home', active: 'home' }, `
 <section class="chapter chapter--dark home-hero">
   <div class="wrap">
-    <div class="home-hero__kicker">코치 · 상담사 · 원장님을 위한 인스타 콘텐츠 제작</div>
+    <div class="home-hero__kicker">전문직과 1인 대표님을 위한 SNS 콘텐츠 기획·제작 스튜디오</div>
     <h1 class="home-hero__title">대표님 이야기로<br><span>문의가 오는</span> 인스타를<br class="br-m"> 만듭니다.</h1>
     <p class="home-hero__lede">인터뷰부터 대본, 촬영, 편집까지 함께 해요.</p>
     <div class="home-hero__actions">
@@ -364,8 +364,8 @@ ${finalCta()}
 }
 
 // ---------- 회사 소개 ----------
-write('about/index.html', page({ title: `회사 소개 | ${BRAND}`, description: 'RE:WORK STUDIO는 코치·상담사·원장님의 이야기를 인스타 콘텐츠로 만드는 회사예요. 대표 정세연과 함께한 브랜드를 소개합니다.', path: '/about', extra: jsonld({ '@context': 'https://schema.org', '@graph': [ORG, PERSON] }), cls: 'page--sub', active: 'about' }, `
-${subHero('회사 소개', '대표님의 이야기를<br><span>콘텐츠로</span> 만드는 회사예요.', '코치·상담사·원장님처럼 실력은 있는데 인스타에서 잘 알려지지 않은 1인 대표님과 일해요.')}
+write('about/index.html', page({ title: `회사 소개 | ${BRAND}`, description: 'RE:WORK STUDIO는 전문직과 1인 대표님을 위한 SNS 콘텐츠 기획·제작 스튜디오예요. 대표 정세연과 함께한 브랜드를 소개합니다.', path: '/about', extra: jsonld({ '@context': 'https://schema.org', '@graph': [ORG, PERSON] }), cls: 'page--sub', active: 'about' }, `
+${subHero('회사 소개', '대표님의 이야기를<br><span>콘텐츠로</span> 만드는 회사예요.', '전문직과 1인 대표님 중, 실력은 있는데 SNS에서 잘 알려지지 않은 분들과 일해요.')}
 
 <section class="chapter">
   <div class="wrap">
