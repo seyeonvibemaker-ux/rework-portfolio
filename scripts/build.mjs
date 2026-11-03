@@ -294,8 +294,8 @@ const card = (p) => `<a class="post-card" href="${p.path}">
 <section class="chapter chapter--dark home-hero">
   <div class="wrap">
     <div class="home-hero__kicker">전문직과 1인 대표님을 위한 SNS 콘텐츠 기획·제작 스튜디오</div>
-    <h1 class="home-hero__title">대표님 이야기로<br><span>문의가 오는</span> 인스타를<br class="br-m"> 만듭니다.</h1>
-    <p class="home-hero__lede">인터뷰부터 대본, 촬영, 편집까지 함께 해요.</p>
+    <h1 class="home-hero__title">대표님은 <span>이야기만</span> 하세요.<br>콘텐츠는 저희가 만들게요.</h1>
+    <p class="home-hero__lede">인터뷰, 대본, 촬영, 편집까지. 문의가 오는 인스타를 함께 만들어요.</p>
     <div class="home-hero__actions">
       <a class="btn btn--red" href="/lead">무료 계정 분석 받기</a>
       <a class="btn btn--ghost" href="/work">작업 사례 보기</a>
@@ -435,7 +435,7 @@ ${finalCta()}
     { '@type': 'FAQPage', mainEntity: FAQ.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
     ORG ] };
   write('services/index.html', page({ title: `서비스와 가격 | 릴스 8편 100·220·300만원 | ${BRAND}`, description: '인터뷰, 대본 8편, 촬영, 편집, 월간 리포트까지. 직접 촬영 100만원, 방문 촬영 220만원, 세팅 촬영 300만원(VAT 별도). 진행 순서와 자주 묻는 질문.', path: '/services', extra: jsonld(ld), cls: 'page--sub', active: 'services' }, `
-${subHero('서비스', '릴스 8편을<br><span>기획부터 편집까지</span> 만들어 드려요.', '대표님은 이야기만 해 주세요. 무엇을 어떤 순서로 말할지는 저희가 정해요.')}
+${subHero('서비스', '릴스 8편을<br><span>기획부터 편집까지</span> 만들어 드려요.', '무엇을 어떤 순서로 말할지 정하는 것부터 저희가 해요.')}
 
 <section class="chapter">
   <div class="wrap">
