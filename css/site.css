@@ -305,3 +305,7 @@ a:focus-visible,summary:focus-visible{outline:2px solid var(--red);outline-offse
 /* work */
 .stat-row--plain{margin-top:0;}
 .page--work .ig-list{margin-top:40px;}
+
+.home-hero__title .nb{white-space:nowrap;}
+.home-hero__title .hl{color:var(--red);}
+.home-hero__title span:not(.hl){color:inherit;}

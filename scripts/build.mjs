@@ -294,7 +294,7 @@ const card = (p) => `<a class="post-card" href="${p.path}">
 <section class="chapter chapter--dark home-hero">
   <div class="wrap">
     <div class="home-hero__kicker">전문직과 1인 대표님을 위한 SNS 콘텐츠 기획·제작 스튜디오</div>
-    <h1 class="home-hero__title">대표님은 <span>이야기만</span> 하세요.<br>콘텐츠는 저희가 만들게요.</h1>
+    <h1 class="home-hero__title">대표님은 <span class="nb"><span class="hl">이야기만</span> 하세요.</span><br>콘텐츠는 <span class="nb">저희가 만들게요.</span></h1>
     <p class="home-hero__lede">인터뷰, 대본, 촬영, 편집까지. 문의가 오는 인스타를 함께 만들어요.</p>
     <div class="home-hero__actions">
       <a class="btn btn--red" href="/lead">무료 계정 분석 받기</a>
