@@ -101,7 +101,7 @@ const ADDONS = [
 ];
 const STEPS = [
   ['무료 계정 분석', '계정을 살펴보고 3영업일 안에 리포트를 보내 드려요'],
-  ['인터뷰', '대표님의 경험과 강점을 들어요'],
+  ['강점 찾기', '인터뷰로 대표님도 몰랐던 강점을 찾아요'],
   ['대본', '고객이 바로 알아듣는 말로 8편을 써요'],
   ['촬영·편집', '직접 또는 PD 방문으로 찍고, 자막·썸네일까지 편집해요'],
   ['월간 리포트', '조회수와 팔로워 변화를 매달 정리해 드려요'],
@@ -335,7 +335,8 @@ const card = (p) => `<a class="post-card" href="${p.path}">
   <div class="wrap">
     ${secHead('서비스', '릴스 8편, <span class="hl">촬영 방법만</span> 고르세요', ['/services', '서비스 자세히 보기'])}
     ${planCards(false)}
-    <p class="footnote">모두 인터뷰 · 대본 · 편집 · 월간 리포트 포함 · VAT 별도</p>
+    <ol class="flow-line">${STEPS.map(([t], i) => `<li><span class="num">${i + 1}</span>${t}</li>`).join('')}</ol>
+    <p class="footnote">모두 대본 · 촬영 가이드 · 편집 · 월간 리포트 포함 · VAT 별도</p>
   </div>
 </section>
 

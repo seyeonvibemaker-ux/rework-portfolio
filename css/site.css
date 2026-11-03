@@ -309,3 +309,9 @@ a:focus-visible,summary:focus-visible{outline:2px solid var(--red);outline-offse
 .home-hero__title .nb{white-space:nowrap;}
 .home-hero__title .hl{color:var(--red);}
 .home-hero__title span:not(.hl){color:inherit;}
+
+/* 홈: 진행 순서 한 줄 */
+.flow-line{list-style:none;margin:20px 0 0;padding:16px 20px;display:flex;flex-wrap:wrap;align-items:center;gap:8px 4px;background:var(--cream-hi);border:1px solid var(--line);border-radius:12px;font-weight:700;font-size:15.5px;}
+.flow-line li{display:flex;align-items:center;gap:8px;}
+.flow-line li:not(:last-child)::after{content:"→";margin:0 6px 0 4px;color:var(--muted);font-weight:400;}
+.flow-line .num{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--black);color:var(--cream);font-size:12px;}
