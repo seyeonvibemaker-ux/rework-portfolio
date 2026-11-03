@@ -27,6 +27,36 @@
       "source": "/work",
       "destination": "/portfolio",
       "permanent": true
+    },
+    {
+      "source": "/ig",
+      "destination": "/?utm_source=instagram&utm_medium=profile",
+      "permanent": false
+    },
+    {
+      "source": "/threads",
+      "destination": "/?utm_source=threads&utm_medium=profile",
+      "permanent": false
+    },
+    {
+      "source": "/naver",
+      "destination": "/?utm_source=naver_blog&utm_medium=post",
+      "permanent": false
+    },
+    {
+      "source": "/youtube",
+      "destination": "/?utm_source=youtube&utm_medium=description",
+      "permanent": false
+    },
+    {
+      "source": "/kakao",
+      "destination": "/?utm_source=kakao&utm_medium=channel",
+      "permanent": false
+    },
+    {
+      "source": "/pdf",
+      "destination": "/?utm_source=proposal&utm_medium=pdf",
+      "permanent": false
     }
   ]
 }
