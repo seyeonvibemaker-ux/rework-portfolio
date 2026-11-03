@@ -5,7 +5,7 @@ const nav = (active) => `<header class="site-nav">
     <a class="site-nav__logo" href="/" aria-label="RE:WORK STUDIO 홈">RE:WORK<span>STUDIO</span></a>
     <nav class="site-nav__links" aria-label="주요 메뉴">
       <a href="/portfolio"${active==='portfolio'?' aria-current="page"':''}><span class="nav-lg">서비스·포트폴리오</span><span class="nav-sm">서비스</span></a>
-      <a href="/insights">인사이트</a>
+      <a href="/insights">블로그</a>
       <a class="site-nav__cta" href="/lead">무료<span class="nav-lg"> 계정</span> 분석</a>
     </nav>
   </div>

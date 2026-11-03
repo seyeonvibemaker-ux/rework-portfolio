@@ -59,7 +59,7 @@ a:focus-visible,summary:focus-visible{outline:2px solid var(--red);outline-offse
 .home-hero__proof>div{padding:22px 20px 0 0;}
 .home-hero__proof dt{font-weight:900;font-size:clamp(26px,3.6vw,40px);color:var(--on-black);}
 .home-hero__proof dd{margin:6px 0 0;color:var(--on-black-muted);font-size:14px;line-height:1.5;}
-@media (max-width:560px){ .home-hero__proof{grid-template-columns:1fr;} .home-hero__proof>div{padding:16px 0 0;} .home-hero__actions .btn{width:100%;} }
+@media (max-width:560px){ .home-hero__proof>div{padding:16px 8px 0 0;} .home-hero__proof dt{font-size:22px;} .home-hero__proof dd{font-size:12.5px;} .home-hero__actions .btn{width:100%;} }
 
 .pain-list{list-style:none;margin:36px 0 36px;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 .pain-list li{display:flex;gap:14px;align-items:flex-start;padding:22px;background:var(--cream-hi);border:1px solid var(--line);border-radius:12px;font-size:clamp(15.5px,1.8vw,18px);font-weight:700;line-height:1.55;}
@@ -188,3 +188,27 @@ a:focus-visible,summary:focus-visible{outline:2px solid var(--red);outline-offse
 
 @media (prefers-reduced-motion:reduce){ .post-card,.proof-card,.btn{transition:none;} .post-card:hover{transform:none;} }
 .has-nav .hero .brand{display:none;}
+
+
+/* ---------- v2.1 쉬운 버전 ---------- */
+.eyebrow--ko{display:block;font-family:"Noto Sans KR",sans-serif;font-weight:700;font-size:15px;letter-spacing:0;text-transform:none;color:#D12525;margin-bottom:18px;}
+.chapter--dark .eyebrow--ko{color:var(--red);}
+.kicker-row--plain{border-bottom:0;padding-bottom:0;margin-bottom:0;}
+.more-link{font-weight:700;font-size:14.5px;color:var(--ink);}
+.pain-list--3{grid-template-columns:repeat(3,1fr);margin:0;}
+.pain-list--3 li{display:block;padding:28px 24px;font-family:"Gothic A1",sans-serif;font-weight:800;font-size:clamp(19px,2.2vw,24px);line-height:1.45;}
+@media (max-width:820px){ .pain-list--3{grid-template-columns:1fr;} }
+.page--home .steps{margin-top:36px;}
+.page--home .step-title{font-size:19px;}
+.page--home .step-desc{font-size:15px;line-height:1.6;}
+.plan-mini__name{font-family:"Gothic A1",sans-serif;font-weight:800;font-size:20px;letter-spacing:0;text-transform:none;color:var(--ink);}
+.plan-mini__name em{font-style:normal;font-family:"Archivo",sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-left:6px;}
+.plan-mini__item p{font-size:15.5px;color:var(--ink);opacity:.8;}
+.post-grid--compact .post-card__desc{display:none;}
+.proof-card__cap b{font-size:16px;}
+.founder-plain{margin-top:22px;color:var(--on-black-muted);font-size:clamp(15.5px,1.8vw,18px);line-height:1.8;}
+.home-final__desc{margin-top:16px;color:var(--on-black-muted);font-size:17px;}
+.home-final .home-hero__actions{margin-top:28px;}
+.br-m{display:none;}
+@media (max-width:560px){ .br-m{display:inline;} }
+.page--home .chapter{padding:clamp(56px,8vw,96px) 0;}

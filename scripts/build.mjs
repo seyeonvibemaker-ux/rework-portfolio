@@ -126,7 +126,7 @@ export function nav(active = '') {
     <a class="site-nav__logo" href="/" aria-label="${BRAND} 홈">RE:WORK<span>STUDIO</span></a>
     <nav class="site-nav__links" aria-label="주요 메뉴">
       ${a('/portfolio', '<span class="nav-lg">서비스·포트폴리오</span><span class="nav-sm">서비스</span>', 'portfolio')}
-      ${a('/insights', '인사이트', 'insights')}
+      ${a('/insights', '블로그', 'insights')}
       <a class="site-nav__cta" href="/lead">무료<span class="nav-lg"> 계정</span> 분석</a>
     </nav>
   </div>
@@ -139,10 +139,10 @@ function footer() {
     <div class="site-foot__top">
       <div>
         <div class="site-foot__brand">RE:WORK STUDIO</div>
-        <p class="site-foot__desc">코치·상담사·원장님의 전문성을 이야기로 정리해<br>고객이 선택할 이유로 만드는 콘텐츠 브랜딩 스튜디오</p>
+        <p class="site-foot__desc">코치·상담사·원장님을 위한<br>인스타 콘텐츠 제작 스튜디오</p>
       </div>
       <nav class="site-foot__links" aria-label="하단 메뉴">
-        <a href="/">홈</a><a href="/portfolio"><span class="nav-lg">서비스·포트폴리오</span><span class="nav-sm">서비스</span></a><a href="/insights">인사이트</a><a href="/lead">무료 계정 분석</a>
+        <a href="/">홈</a><a href="/portfolio"><span class="nav-lg">서비스·포트폴리오</span><span class="nav-sm">서비스</span></a><a href="/insights">블로그</a><a href="/lead">무료 계정 분석</a>
       </nav>
       <div class="site-foot__links">
         <a href="${INSTA}" target="_blank" rel="noopener">Instagram</a>
@@ -163,10 +163,10 @@ function ctaBand() {
   <div class="wrap cta-band__in">
     <div>
       <div class="cta-band__tag">Free · 무료 계정 분석</div>
-      <p class="cta-band__title">내 계정은 왜 문의로 이어지지 않을까요?</p>
-      <p class="cta-band__desc">대표님 계정을 직접 살펴보고 첫인상 진단, 반응이 없는 이유, 다음에 올릴 콘텐츠 3가지를 정리해 드립니다. 신청 후 3영업일 안에 1:1 리포트로 보내드려요.</p>
+      <p class="cta-band__title">내 계정은 왜 문의가 없을까요?</p>
+      <p class="cta-band__desc">무료로 살펴보고, 3영업일 안에 리포트로 알려 드려요.</p>
     </div>
-    <a class="btn btn--red" href="/lead">무료 분석 신청하기</a>
+    <a class="btn btn--red" href="/lead">무료 계정 분석 받기</a>
   </div>
 </section>`;
 }
@@ -240,7 +240,7 @@ for (const p of posts) {
       },
       { '@type': 'BreadcrumbList', itemListElement: [
         { '@type': 'ListItem', position: 1, name: '홈', item: `${SITE}/` },
-        { '@type': 'ListItem', position: 2, name: '인사이트', item: `${SITE}/insights` },
+        { '@type': 'ListItem', position: 2, name: '블로그', item: `${SITE}/insights` },
         { '@type': 'ListItem', position: 3, name: p.title, item: `${SITE}${p.path}` },
       ] },
       ...(p.faq.length ? [{ '@type': 'FAQPage', mainEntity: p.faq.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }] : []),
@@ -255,7 +255,7 @@ ${nav('insights')}
 <article class="article">
   <header class="article__head">
     <div class="wrap wrap--narrow">
-      <nav class="crumbs" aria-label="현재 위치"><a href="/">홈</a><span>/</span><a href="/insights">인사이트</a><span>/</span><span>${esc(p.category)}</span></nav>
+      <nav class="crumbs" aria-label="현재 위치"><a href="/">홈</a><span>/</span><a href="/insights">블로그</a><span>/</span><span>${esc(p.category)}</span></nav>
       <div class="article__cat">${esc(p.category)}</div>
       <h1 class="article__title">${esc(p.title)}</h1>
       <div class="article__byline">
@@ -276,13 +276,13 @@ ${p.html}
       <div class="author-box__photo" style="background-image:url(/images/img-13.jpg)" role="img" aria-label="정세연 대표 사진"></div>
       <div>
         <div class="author-box__name">${AUTHOR} <span>RE:WORK STUDIO 대표</span></div>
-        <p>공기업에서 17년간 계획·기획 일을 하다가, 지금은 코치·상담사·원장님의 전문성을 이야기로 정리하는 콘텐츠를 기획합니다. 30팀 이상의 브랜드·계정 콘텐츠를 맡았고, 『파워루틴핏』을 썼습니다.</p>
-        <a href="/portfolio">포트폴리오 보기 →</a>
+        <p>LH공사에서 17년 동안 기획 일을 했어요. 지금은 대표님들의 이야기를 인스타 콘텐츠로 만들어요. 30팀 넘는 브랜드와 함께했어요.</p>
+        <a href="/portfolio">작업 사례 보기 →</a>
       </div>
     </aside>
   </div>
 </article>
-${others.length ? `<section class="related"><div class="wrap"><div class="kicker-row"><span class="eyebrow">More Insights</span><a class="index" href="/insights">전체 보기 →</a></div><div class="post-grid post-grid--2">${others.map(card).join('')}</div></div></section>` : ''}
+${others.length ? `<section class="related"><div class="wrap"><div class="kicker-row"><span class="eyebrow eyebrow--ko">다른 글</span><a class="more-link" href="/insights">전체 보기 →</a></div><div class="post-grid post-grid--2">${others.map(card).join('')}</div></div></section>` : ''}
 ${ctaBand()}
 </main>
 ${footer()}
@@ -299,16 +299,16 @@ ${footer()}
     { '@type': 'Blog', '@id': `${SITE}/insights#blog`, name: `${BRAND} 인사이트`, url: `${SITE}/insights`, inLanguage: 'ko-KR', publisher: { '@id': `${SITE}/#org` },
       blogPost: posts.map(p => ({ '@type': 'BlogPosting', headline: p.title, url: `${SITE}${p.path}`, datePublished: p.date })) },
     ORG, PERSON ] };
-  const page = `${head({ title: `인사이트 | 1인 전문가를 위한 브랜딩·콘텐츠 마케팅 | ${BRAND}`, description: '코치·상담사·원장님을 위한 퍼스널 브랜딩, 스토리 브랜딩, 인스타 문의 동선 이야기. 연구와 공식 자료를 근거로 대표님 계정에 바로 적용할 방법을 정리합니다.', path: '/insights', extra: jsonld(ld) })}
+  const page = `${head({ title: `블로그 | 인스타·브랜딩 고민을 쉽게 풀어 드려요 | ${BRAND}`, description: '코치·상담사·원장님의 인스타·브랜딩 고민을 쉬운 말로 풀어 드려요. 연구와 공식 자료를 근거로, 바로 해 볼 수 있는 방법만 담았어요.', path: '/insights', extra: jsonld(ld) })}
 <body class="page page--insights">
 ${nav('insights')}
 <main>
 <section class="page-hero">
   <div class="wrap">
-    <div class="kicker-row"><span class="eyebrow">Insights</span><span class="index num">${String(posts.length).padStart(2, '0')} posts</span></div>
-    <h1 class="headline">전문성이 <span class="hl">선택받는 이유</span>가 되도록,<br>근거로 정리한 브랜딩 이야기</h1>
-    <p class="subhead">해외 연구와 플랫폼 공식 자료를 읽고, 코치·상담사·원장님 계정에 바로 적용할 수 있는 방법으로 풀어 씁니다.</p>
-    ${cats.length > 1 ? `<div class="cat-chips">${cats.map(c => `<span class="cat-chip">${esc(c)}</span>`).join('')}</div>` : ''}
+    <div class="eyebrow eyebrow--ko">블로그</div>
+    <h1 class="headline">인스타 고민,<br><span class="hl">쉽게 풀어 드려요</span></h1>
+    <p class="subhead">연구와 공식 자료를 바탕으로, 바로 해 볼 수 있는 방법만 담았어요.</p>
+    
   </div>
 </section>
 <section class="insights-list">
@@ -328,110 +328,103 @@ ${footer()}
 // ---------- home ----------
 {
   const homeFaq = [
-    { q: 'RE:WORK STUDIO는 어떤 대표님과 일하나요?', a: '코치, 컨설턴트, 상담사, 학원·어린이집 원장님처럼 자기 분야의 전문성을 가진 1인 사업가와 일합니다. 전문성은 있는데 SNS에서 고객에게 선택받지 못하고 있다면 가장 잘 맞습니다.' },
-    { q: '무료 계정 분석은 어떻게 진행되나요?', a: '신청서를 남겨주시면 대표님 계정을 직접 살펴보고 첫인상 진단, 반응이 없는 이유, 다음에 올릴 콘텐츠 3가지를 정리해 3영업일 안에 1:1 리포트로 보내드립니다. 원하시면 15분 통화로 함께 짚어드립니다.' },
-    { q: '제가 직접 촬영해야 하나요?', a: 'Self 구성은 대표님이 직접 촬영하시고, 장면별 촬영 가이드와 프롬프트를 드립니다. Standard와 Premium 구성은 PD가 방문해 촬영합니다.' },
-    { q: '비용은 얼마인가요?', a: '릴스 8편 기준 Self 100만원, Standard 220만원, Premium 300만원이며 VAT 별도입니다(2026년 9월 기준). 진행 기간과 업로드 대행 여부는 계약 전에 대표님 일정에 맞춰 확정합니다.' },
+    { q: '어떤 대표님과 일하나요?', a: '코치, 상담사, 학원·어린이집·필라테스 원장님처럼 실력은 있는데 인스타에서 잘 알려지지 않은 1인 대표님과 일해요.' },
+    { q: '무료 계정 분석은 뭘 해 주나요?', a: '대표님 계정을 직접 보고 첫인상, 반응이 없는 이유, 다음에 올릴 콘텐츠 3가지를 정리해 드려요. 신청 후 3영업일 안에 리포트로 보내 드리고, 원하시면 15분 통화도 해요.' },
+    { q: '제가 직접 찍어야 하나요?', a: '직접 촬영(100만원)은 대표님이 찍고 저희가 촬영 가이드를 드려요. 방문 촬영과 세팅 촬영은 PD가 찾아가서 찍어요.' },
+    { q: '비용은 얼마인가요?', a: '릴스 8편 기준 100만원, 220만원, 300만원이에요(VAT 별도, 2026년 9월 기준). 기간과 업로드 대행은 계약 전에 일정에 맞춰 정해요.' },
   ];
   const latest = posts.slice(0, 3);
   const ld = { '@context': 'https://schema.org', '@graph': [
     { '@type': 'WebSite', '@id': `${SITE}/#website`, name: BRAND, url: `${SITE}/`, inLanguage: 'ko-KR', publisher: { '@id': `${SITE}/#org` } },
     { ...ORG, makesOffer: [
-      { '@type': 'Offer', name: 'Self · 릴스 8편 (직접 촬영)', price: '1000000', priceCurrency: 'KRW' },
-      { '@type': 'Offer', name: 'Standard · 릴스 8편 (PD 방문 촬영 2회)', price: '2200000', priceCurrency: 'KRW' },
-      { '@type': 'Offer', name: 'Premium · 릴스 8편 (세팅 촬영 3회)', price: '3000000', priceCurrency: 'KRW' },
+      { '@type': 'Offer', name: '직접 촬영 (Self) · 릴스 8편', price: '1000000', priceCurrency: 'KRW' },
+      { '@type': 'Offer', name: '방문 촬영 (Standard) · 릴스 8편', price: '2200000', priceCurrency: 'KRW' },
+      { '@type': 'Offer', name: '세팅 촬영 (Premium) · 릴스 8편', price: '3000000', priceCurrency: 'KRW' },
     ] },
     PERSON,
     { '@type': 'FAQPage', mainEntity: homeFaq.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
   ] };
-  const page = `${head({ title: `${BRAND} | 코치·상담사·원장님을 위한 콘텐츠 브랜딩 스튜디오`, description: '전문성은 있는데 SNS에서 선택받지 못하는 대표님을 위해, 흩어진 경험을 정리해 릴스·카드뉴스로 만들고 인지에서 상담까지 이어지는 흐름을 설계합니다. 무료 계정 분석 신청 가능.', path: '/', extra: jsonld(ld) })}
+  const step = (no, title, desc, dark) => `<div class="step${dark ? ' is-dark' : ''}"><div class="step-no num">${no}</div><div class="step-title">${title}</div><div class="step-desc">${desc}</div></div>`;
+  const proof = (url, img, who, stat) => `<a class="proof-card" href="${url}" target="_blank" rel="noopener"><div class="proof-card__img" style="background-image:url(/images/${img})"></div><div class="proof-card__cap"><b>${stat}</b><span>${who}</span></div></a>`;
+  const plan = (en, ko, price, desc, pick) => `<div class="plan-mini__item${pick ? ' is-pick' : ''}">${pick ? '<div class="plan-mini__badge">가장 많이 선택</div>' : ''}<div class="plan-mini__name">${ko} <em>${en}</em></div><div class="plan-mini__price num">${price}<span>만원</span></div><p>${desc}</p></div>`;
+  const page = `${head({ title: `${BRAND} | 코치·상담사·원장님을 위한 인스타 콘텐츠 제작`, description: '실력은 있는데 인스타에서 문의가 없는 대표님께. 인터뷰, 대본, 촬영, 편집까지 함께 해서 문의가 오는 인스타를 만듭니다. 무료 계정 분석 신청 가능.', path: '/', extra: jsonld(ld) })}
 <body class="page page--home">
 ${nav('home')}
 <main>
 
 <section class="chapter chapter--dark home-hero">
   <div class="wrap">
-    <div class="home-hero__kicker">코치 · 상담사 · 원장님을 위한 콘텐츠 브랜딩 스튜디오</div>
-    <h1 class="home-hero__title">대표님의 전문성을<br>고객이 <span>선택할 이유</span>로 바꿉니다.</h1>
-    <p class="home-hero__lede"><span class="nb">흩어진 경험을 정리해 언어로 만들고,</span> <span class="nb">그 언어를 릴스와 카드뉴스로 완성합니다.</span> <span class="nb">인지에서 상담까지 이어지는 흐름을 함께 설계합니다.</span></p>
+    <div class="home-hero__kicker">코치 · 상담사 · 원장님을 위한 인스타 콘텐츠 제작</div>
+    <h1 class="home-hero__title">대표님 이야기로<br><span>문의가 오는</span> 인스타를<br class="br-m"> 만듭니다.</h1>
+    <p class="home-hero__lede">인터뷰부터 대본, 촬영, 편집까지 함께 해요.</p>
     <div class="home-hero__actions">
-      <a class="btn btn--red" href="/lead">무료 계정 분석 신청</a>
-      <a class="btn btn--ghost" href="/portfolio">서비스·포트폴리오 보기</a>
+      <a class="btn btn--red" href="/lead">무료 계정 분석 받기</a>
+      <a class="btn btn--ghost" href="/portfolio">작업 사례 보기</a>
     </div>
     <dl class="home-hero__proof">
-      <div><dt class="num">200만+</dt><dd>기획·제작 콘텐츠 누적 조회수</dd></div>
-      <div><dt class="num">30팀+</dt><dd>콘텐츠 기획을 맡은 브랜드·계정</dd></div>
-      <div><dt class="num">0원</dt><dd>광고 집행 없이 스토리 콘텐츠로</dd></div>
+      <div><dt class="num">200만+</dt><dd>만든 콘텐츠 누적 조회수</dd></div>
+      <div><dt class="num">30팀+</dt><dd>함께한 브랜드</dd></div>
+      <div><dt class="num">17년</dt><dd>대표의 공기업 기획 경력</dd></div>
     </dl>
   </div>
 </section>
 
 <section class="chapter">
   <div class="wrap">
-    <div class="kicker-row"><span class="eyebrow">The Problem</span><span class="index num">01</span></div>
-    <h2 class="headline">설명만 하는 계정은 스쳐 지나가고,<br><span class="hl">이야기가 있는 계정</span>만 남습니다</h2>
-    <ul class="pain-list">
-      <li><span class="pain-list__no num">01</span><span><span class="nb">매일 올리는데</span> <span class="nb">팔로워도, 문의도 늘지 않나요?</span></span></li>
-      <li><span class="pain-list__no num">02</span><span><span class="nb">내 전문성을 뭐라고 소개해야 할지</span> <span class="nb">아직도 애매하신가요?</span></span></li>
-      <li><span class="pain-list__no num">03</span><span><span class="nb">콘텐츠는 쌓이는데,</span> <span class="nb">수익화는 대체 언제 되나 싶으신가요?</span></span></li>
-      <li><span class="pain-list__no num">04</span><span><span class="nb">SNS가 중요하다는 건 알겠는데,</span> <span class="nb">무엇부터 시작할지 막막하신가요?</span></span></li>
+    <div class="eyebrow eyebrow--ko">이런 대표님께 맞아요</div>
+    <ul class="pain-list pain-list--3">
+      <li>매일 올리는데<br>문의가 없어요</li>
+      <li>내 일을 뭐라고<br>소개할지 모르겠어요</li>
+      <li>뭘 올려야 할지<br>막막해요</li>
     </ul>
-    <p class="subhead subhead--punch">답은 콘텐츠 개수가 아니라, <span class="hl">정리된 이야기</span>에 있습니다.</p>
   </div>
 </section>
 
 <section class="chapter chapter--dim">
   <div class="wrap">
-    <div class="kicker-row"><span class="eyebrow">How We Work</span><span class="index num">02</span></div>
-    <h2 class="headline">소재를 더 찾기 전에,<br><span class="hl">순서</span>부터 바로잡습니다</h2>
-    <p class="subhead"><span class="nb">전문성이 깊을수록 고객에게 쉽게 설명하는 일은 더 어렵습니다.</span> <span class="nb">그래서 정리부터 시작합니다.</span></p>
+    <div class="eyebrow eyebrow--ko">진행 방식</div>
+    <h2 class="headline">대표님은 이야기만 해 주세요.<br><span class="hl">나머지는 저희가</span> 해요.</h2>
     <div class="steps">
-      <div class="step"><div class="step-no num">01</div><div class="step-title">정리</div><div class="step-desc">경험·이력·강점을 인터뷰로 꺼내 정리합니다</div></div>
-      <div class="step"><div class="step-no num">02</div><div class="step-title">언어화</div><div class="step-desc">핵심 메시지와 시그니처 문장을 만듭니다</div></div>
-      <div class="step is-dark"><div class="step-no num">03</div><div class="step-title">스토리</div><div class="step-desc">릴스·카드뉴스로 이야기를 완성합니다</div></div>
-      <div class="step"><div class="step-no num">04</div><div class="step-title">자산</div><div class="step-desc">계정에 쌓여 다음 콘텐츠의 기반이 됩니다</div></div>
-    </div>
-    <div class="journey">
-      <div class="journey-row journey-row--ours"><span class="journey-tag">리워크가 하는 일</span><div class="journey-cells"><span>정리</span><span>언어화</span><span>스토리</span><span>자산</span></div></div>
-      <div class="journey-row journey-row--theirs"><span class="journey-tag">고객에게 일어나는 일</span><div class="journey-cells"><span>인지</span><span>신뢰</span><span>상품 이해</span><span>상담·구매</span></div></div>
+      ${step('01', '이야기 듣기', '인터뷰로 대표님의 경험과 강점을 들어요')}
+      ${step('02', '할 말 정리', '고객이 바로 알아듣는 말로 바꿔요')}
+      ${step('03', '영상 만들기', '대본, 촬영 가이드, 편집까지 해 드려요', true)}
+      ${step('04', '문의로 연결', '영상을 본 고객이 상담을 신청하게 만들어요')}
     </div>
   </div>
 </section>
 
 <section class="chapter chapter--dark">
   <div class="wrap">
-    <div class="kicker-row"><span class="eyebrow">Proof</span><span class="index num">03</span></div>
-    <h2 class="headline">조회수는 시작입니다.<br>대표님의 <span class="hl">상품</span>까지 이어져야 합니다</h2>
-    <p class="subhead">아래는 모두 광고 집행 없이 스토리 기반 콘텐츠만으로 만든 결과입니다. 카드를 누르면 실제 게시물로 연결됩니다.</p>
+    <div class="eyebrow eyebrow--ko">결과</div>
+    <h2 class="headline">광고비 없이 만든 <span class="hl">결과</span>예요</h2>
     <div class="proof-grid">
-      <a class="proof-card" href="https://www.instagram.com/p/DayqhlbE3a7/" target="_blank" rel="noopener"><div class="proof-card__img" style="background-image:url(/images/img-01.jpg)"></div><div class="proof-card__cap"><b>@cpa_jamiecoach</b><span>카드뉴스 · 댓글 8,000</span></div></a>
-      <a class="proof-card" href="https://www.instagram.com/youandme_colorlab/" target="_blank" rel="noopener"><div class="proof-card__img" style="background-image:url(/images/img-04.jpg)"></div><div class="proof-card__cap"><b>@youandme_colorlab</b><span>릴스 · 조회수 37.6만</span></div></a>
-      <a class="proof-card" href="https://www.instagram.com/roko_725/" target="_blank" rel="noopener"><div class="proof-card__img" style="background-image:url(/images/img-07.jpg)"></div><div class="proof-card__cap"><b>@roko_725</b><span>릴스 · 조회수 30.1만</span></div></a>
-      <a class="proof-card" href="https://www.instagram.com/heart.and.color_/" target="_blank" rel="noopener"><div class="proof-card__img" style="background-image:url(/images/img-10.jpg)"></div><div class="proof-card__cap"><b>@heart.and.color_</b><span>릴스 · 조회수 25.4만</span></div></a>
+      ${proof('https://www.instagram.com/p/DayqhlbE3a7/', 'img-01.jpg', '부모교육 코치', '댓글 8,000개')}
+      ${proof('https://www.instagram.com/youandme_colorlab/', 'img-04.jpg', '어린이집 원장', '조회수 37.6만')}
+      ${proof('https://www.instagram.com/roko_725/', 'img-07.jpg', '부부관계 상담가', '조회수 30.1만')}
+      ${proof('https://www.instagram.com/heart.and.color_/', 'img-10.jpg', '아동 미술치료', '조회수 25.4만')}
     </div>
-    <p class="footnote footnote--dark">2026년 9월까지 기획·제작한 콘텐츠 기준 수치입니다. <a href="/portfolio">대표 콘텐츠 12편 전체 보기 →</a></p>
+    <p class="footnote footnote--dark"><a href="/portfolio">작업 사례 12편 모두 보기 →</a></p>
   </div>
 </section>
 
 <section class="chapter">
   <div class="wrap">
-    <div class="kicker-row"><span class="eyebrow">Service</span><span class="index num">04</span></div>
-    <h2 class="headline">대표님은 이야기만 들려주세요.<br><span class="hl">무엇을 어떤 순서로</span> 말할지는 저희가 설계합니다</h2>
+    <div class="eyebrow eyebrow--ko">비용</div>
+    <h2 class="headline">촬영 방법만 고르시면 돼요</h2>
     <div class="plan-mini">
-      <div class="plan-mini__item"><div class="plan-mini__name">Self</div><div class="plan-mini__price num">100<span>만원</span></div><p>릴스 8편 · 대표님이 직접 촬영<br>촬영 가이드·프롬프트 제공</p></div>
-      <div class="plan-mini__item is-pick"><div class="plan-mini__badge">가장 많이 선택</div><div class="plan-mini__name">Standard</div><div class="plan-mini__price num">220<span>만원</span></div><p>릴스 8편 · PD 방문 촬영 2회<br>인터뷰형 촬영</p></div>
-      <div class="plan-mini__item"><div class="plan-mini__name">Premium</div><div class="plan-mini__price num">300<span>만원</span></div><p>릴스 8편 · PD 방문 촬영 3회<br>제품·공간 세팅 대응</p></div>
+      ${plan('Self', '직접 촬영', 100, '대표님이 찍어요.<br>촬영 가이드를 드려요.')}
+      ${plan('Standard', '방문 촬영', 220, 'PD가 2번 찾아가서<br>인터뷰처럼 찍어요.', true)}
+      ${plan('Premium', '세팅 촬영', 300, 'PD가 3번 찾아가서<br>제품·공간까지 세팅해 찍어요.')}
     </div>
-    <p class="footnote"><b>공통 포함</b> 브랜드 스토리 인터뷰 · 릴스 스크립트 8편 · 장면별 촬영 가이드 · 편집(자막·썸네일) · 월 1회 성과 리포트. 2026년 9월 기준, VAT 별도. <a href="/portfolio">상품 구성 자세히 보기 →</a></p>
+    <p class="footnote">모두 릴스 8편 · 대본 · 편집 · 월 1회 리포트 포함 · VAT 별도 <a href="/portfolio">자세히 보기 →</a></p>
   </div>
 </section>
 
 ${latest.length ? `<section class="chapter chapter--dim">
   <div class="wrap">
-    <div class="kicker-row"><span class="eyebrow">Insights</span><a class="index" href="/insights">전체 보기 →</a></div>
-    <h2 class="headline">근거로 정리한 <span class="hl">브랜딩 이야기</span></h2>
-    <p class="subhead">연구와 플랫폼 공식 자료를 읽고, 대표님 계정에 바로 적용할 방법으로 풀어 씁니다.</p>
-    <div class="post-grid">${latest.map(card).join('')}</div>
+    <div class="kicker-row kicker-row--plain"><span class="eyebrow eyebrow--ko">블로그</span><a class="more-link" href="/insights">전체 보기 →</a></div>
+    <h2 class="headline">인스타 고민, 쉽게 풀어 드려요</h2>
+    <div class="post-grid post-grid--compact">${latest.map(card).join('')}</div>
   </div>
 </section>` : ''}
 
@@ -439,59 +432,29 @@ ${latest.length ? `<section class="chapter chapter--dim">
   <div class="founder-bg" style="background-image:url(/images/img-13.jpg)"></div>
   <div class="founder-bg founder-bg--m" style="background-image:url(/images/img-14.jpg)"></div>
   <div class="wrap">
-    <div class="kicker-row"><span class="eyebrow">Founder</span><span class="index num">05</span></div>
     <div class="founder-row"><div>
+      <div class="eyebrow eyebrow--ko">대표 소개</div>
       <div class="founder-name">정세연</div>
-      <div class="founder-role">RE:WORK STUDIO 대표</div>
-      <div class="founder-quote">“브랜딩은 스토리다 — 저는 스토리텔러 마케팅 전문가입니다”</div>
-      <div class="founder-stats">
-        <div class="stat"><div class="stat-num num">17년</div><div class="stat-label">LH공사 근무<br>계획·기획 업무</div></div>
-        <div class="stat"><div class="stat-num num">30팀+</div><div class="stat-label">콘텐츠 기획을 맡은<br>브랜드·계정</div></div>
-        <div class="stat"><div class="stat-num num">7팀</div><div class="stat-label">현재 진행 중인<br>클라이언트</div></div>
-        <div class="stat"><div class="stat-num num">200만+</div><div class="stat-label">기획·제작 콘텐츠<br>누적 조회수</div></div>
-      </div>
-      <div class="founder-list">
-        <div class="founder-item"><div class="founder-tag">현</div><div>RE:WORK STUDIO 대표 — 콘텐츠 브랜딩 &amp; SNS 기획대행</div></div>
-        <div class="founder-item"><div class="founder-tag">저서</div><div>『파워루틴핏』 저자</div></div>
-      </div>
+      <div class="founder-quote">“브랜딩은 결국 이야기예요.”</div>
+      <p class="founder-plain">LH공사에서 17년 동안 기획 일을 했어요.<br>지금은 대표님들의 이야기를 콘텐츠로 만들어요.<br>『파워루틴핏』을 썼어요.</p>
     </div></div>
   </div>
 </section>
 
 <section class="chapter">
   <div class="wrap">
-    <div class="kicker-row"><span class="eyebrow">FAQ</span><span class="index num">06</span></div>
-    <h2 class="headline">자주 묻는 질문</h2>
+    <div class="eyebrow eyebrow--ko">자주 묻는 질문</div>
     <div class="faq faq--home">${homeFaq.map(f => `<details class="faq__item"><summary>${esc(f.q)}</summary><p>${esc(f.a)}</p></details>`).join('')}</div>
   </div>
 </section>
 
-<section class="chapter chapter--dark">
+<section class="chapter chapter--dark home-final">
   <div class="wrap">
-    <div class="kicker-row"><span class="eyebrow">Start</span><span class="index num">07</span></div>
-    <h2 class="closing-head">이야기를 정리하면, 브랜드가 됩니다.<br><span class="line2">다음 주인공은 대표님입니다.</span></h2>
-    <div class="closing-cards">
-      <a class="cl-card cl-card--hero" href="/lead">
-        <div>
-          <div class="cl-tag">Start · 이번 달 신청분 한정</div>
-          <div class="cl-title">무료 계정 분석 신청 →</div>
-          <div class="cl-desc"><span class="nb">대표님 계정을 직접 뜯어보고</span> <span class="nb"><b>첫인상 진단 · 반응이 없는 이유 ·</b></span> <span class="nb"><b>다음에 올릴 콘텐츠 3가지</b>를 정리해 드립니다.</span> <span class="nb">신청 후 <b>3영업일 안에</b> 1:1 리포트로 보내드리고,</span> <span class="nb">원하시면 15분 통화로 짚어드립니다.</span></div>
-        </div>
-        <span class="cl-go">무료 신청하기</span>
-      </a>
-      <a class="cl-card cl-card--kakao" href="${KAKAO}" target="_blank" rel="noopener">
-        <div>
-          <div class="cl-tag">Follow</div>
-          <div class="cl-title">카카오톡 채널 추가 →</div>
-          <div class="cl-desc"><span class="nb">채널을 추가하시면</span> <span class="nb">상담 문의와 콘텐츠 소식을</span> <span class="nb">카톡으로 바로 받아보실 수 있어요.</span></div>
-        </div>
-        <img class="cl-qr" src="/images/img-15.png" alt="리워크 스튜디오 카카오톡 채널 QR">
-      </a>
-      <a class="cl-card" href="${INSTA}" target="_blank" rel="noopener">
-        <div class="cl-tag">Ask</div>
-        <div class="cl-title">인스타그램 DM →</div>
-        <div class="cl-desc">@rework_studio99 로 편하게 메시지 주세요.</div>
-      </a>
+    <h2 class="closing-head">먼저 무료로<br><span class="line2">내 계정 분석부터 받아 보세요.</span></h2>
+    <p class="home-final__desc">3영업일 안에 리포트로 보내 드려요.</p>
+    <div class="home-hero__actions">
+      <a class="btn btn--red" href="/lead">무료 계정 분석 받기</a>
+      <a class="btn btn--ghost" href="${KAKAO}" target="_blank" rel="noopener">카카오톡으로 물어보기</a>
     </div>
   </div>
 </section>
@@ -539,4 +502,16 @@ ${posts.map(p => `<item><title>${esc(p.title)}</title><link>${SITE}${p.path}</li
 `);
 }
 
+// ---------- 쉬운 말 검사: 화면에 보이는 글에 어려운 말이 있으면 경고 ----------
+{
+  const HARD = ['언어화', '퍼널', '동선', '전환율', '내러티브', '운송', '서사', '구조화', '시그니처', 'end-to-end', '프로파일', '리드', '어트리뷰션', '인지 단계', '자산화'];
+  const pages = ['index.html', 'insights/index.html', ...posts.map(p => `insights/${p.slug}/index.html`), 'portfolio/index.html', 'lead/index.html'];
+  let warn = 0;
+  for (const rel of pages) {
+    const f = join(ROOT, rel); if (!existsSync(f)) continue;
+    const text = readFileSync(f, 'utf8').replace(/<script[\s\S]*?<\/script>/g, '').replace(/<head>[\s\S]*?<\/head>/, '').replace(/<[^>]+>/g, ' ');
+    for (const w of HARD) { const n = text.split(w).length - 1; if (n) { console.warn(`  [쉬운 말] ${rel}: "${w}" ${n}회`); warn++; } }
+  }
+  console.log(warn ? `쉬운 말 검사: 경고 ${warn}건` : '쉬운 말 검사: 통과');
+}
 console.log(`built: home, insights(${posts.length}), sitemap(${posts.length + 4} urls), robots, feed`);
