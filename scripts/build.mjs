@@ -89,10 +89,17 @@ function md(src) {
 }
 
 // ---------- site data ----------
-const PLANS = [
-  { ko: '직접 촬영', en: 'Self', price: 100, one: '대표님이 직접 찍어요', shoot: '대표님이 직접 촬영 (촬영 가이드 제공)' },
-  { ko: '방문 촬영', en: 'Standard', price: 220, one: 'PD가 2번 찾아가서 찍어요', shoot: 'PD 방문 촬영 2회 (인터뷰형)', pick: true },
-  { ko: '세팅 촬영', en: 'Premium', price: 300, one: 'PD가 3번, 제품·공간까지 세팅해요', shoot: 'PD 방문 촬영 3회 (제품·공간 세팅)' },
+// 촬영 방식 3가지 × 콘텐츠 형식 2가지. 같은 가격 안에서 숏폼/롱폼을 고른다.
+const TIERS = [
+  { en: 'Self', ko: '직접 촬영', who: '대표님 직접 촬영', how: '촬영 가이드 제공' },
+  { en: 'Standard', ko: '인터뷰 촬영', who: 'PD 1~2회 촬영', how: '인터뷰형 · 2캠', pick: true },
+  { en: 'Premium', ko: '현장·특수 촬영', who: 'PD 2회 촬영', how: '인터뷰 외 형식 · 현장 세팅 + B롤', ex: '예: 수업·시술 현장, 제품 시연, 공간 투어' },
+];
+const FORMATS = [
+  { en: 'Short-form', ko: '숏폼', unit: '릴스 8편', prices: [100, 220, 300], notes: ['', '', ''],
+    incl: [['기획', '인터뷰 · 대본 8편'], ['촬영', '장면별 촬영 가이드'], ['편집', '자막 · 썸네일'], ['수정', '편집 1회 · 오타 무제한']] },
+  { en: 'Long-form', ko: '롱폼', unit: '4편 · 편당 10분 내외', prices: [100, 220, 300], notes: ['숏폼 클립 별도 · 개당 5만원', '숏폼 클립 8개 서비스', '숏폼 클립 8개 서비스'],
+    incl: [['기획', '인터뷰 · 구성안·대본 4편'], ['촬영', '장면별 촬영 가이드'], ['편집', '컷편집 · 자막 · 챕터<br>썸네일 · 제목·설명란'], ['수정', '편집 1회 · 오타 무제한']] },
 ];
 const ADDONS = [
   { name: '카드뉴스', price: '2만원', unit: '1장' },
@@ -103,7 +110,7 @@ const ADDONS = [
 const STEPS = [
   ['무료 계정 분석', '계정을 살펴보고 3영업일 안에 리포트를 보내 드려요'],
   ['강점 찾기', '인터뷰로 대표님도 몰랐던 강점을 찾아요'],
-  ['대본', '고객이 바로 알아듣는 말로 8편을 써요'],
+  ['대본', '고객이 바로 알아듣는 말로 대본을 써요'],
   ['촬영·편집', '직접 또는 PD 방문으로 찍고, 자막·썸네일까지 편집해요'],
   ['월간 리포트', '조회수와 팔로워 변화를 매달 정리해 드려요'],
 ];
@@ -120,7 +127,8 @@ const BRANDS = [
 const FAQ = [
   { q: '어떤 대표님과 일하나요?', a: '코치, 상담사, 원장님 같은 전문직과 1인 대표님과 일해요. 실력은 있는데 SNS에서 잘 알려지지 않았다면 잘 맞아요.' },
   { q: '무료 계정 분석은 뭘 해 주나요?', a: '대표님 계정을 직접 보고 첫인상, 반응이 없는 이유, 다음에 올릴 콘텐츠 3가지를 정리해 드려요. 3영업일 안에 리포트로 보내 드리고, 원하시면 15분 통화도 해요.' },
-  { q: '제가 직접 찍어야 하나요?', a: '직접 촬영(100만원)은 대표님이 찍고 저희가 촬영 가이드를 드려요. 방문 촬영과 세팅 촬영은 PD가 찾아가서 찍어요.' },
+  { q: '숏폼과 롱폼은 뭐가 다른가요?', a: '숏폼은 릴스 8편, 롱폼은 편당 10분 안팎의 영상 4편이에요. 가격은 같고, 롱폼 인터뷰 촬영·현장 촬영에는 숏폼 클립 8개가 함께 들어가요.' },
+  { q: '제가 직접 찍어야 하나요?', a: '직접 촬영(SELF)은 대표님이 찍고 저희가 장면별 촬영 가이드를 드려요. 인터뷰 촬영(STANDARD)은 PD가 1~2회, 현장·특수 촬영(PREMIUM)은 PD가 2회 찾아가서 찍어요.' },
   { q: '기간은 얼마나 걸리고, 업로드도 해 주나요?', a: '진행 기간과 업로드 대행 여부는 계약 전에 대표님 일정에 맞춰 정해요.' },
   { q: '수정은 몇 번 되나요?', a: '편집 수정은 1번, 오타 수정은 횟수 제한 없이 해 드려요.' },
 ];
@@ -229,7 +237,17 @@ function ctaBand() {
 
 const secHead = (eyebrow, title, more) => `<div class="sec-head"><div><div class="eyebrow eyebrow--ko">${eyebrow}</div><h2 class="headline">${title}</h2></div>${more ? `<a class="more-link" href="${more[0]}">${more[1]} →</a>` : ''}</div>`;
 const subHero = (eyebrow, title, lede) => `<section class="chapter chapter--dark sub-hero"><div class="wrap"><div class="eyebrow eyebrow--ko">${eyebrow}</div><h1 class="sub-hero__title">${title}</h1>${lede ? `<p class="sub-hero__lede">${lede}</p>` : ''}</div></section>`;
-const planCards = (full) => `<div class="plan-mini${full ? ' plan-mini--full' : ''}">${PLANS.map(p => `<div class="plan-mini__item${p.pick ? ' is-pick' : ''}">${p.pick ? '<div class="plan-mini__badge">가장 많이 선택</div>' : ''}<div class="plan-mini__name">${p.ko} <em>${p.en}</em></div><div class="plan-mini__price num">${p.price}<span>만원</span></div><p class="plan-mini__one">${p.one}</p>${full ? `<ul class="plan-spec"><li><b>분량</b><span>릴스 8편</span></li><li><b>촬영</b><span>${p.shoot}</span></li><li><b>기획</b><span>인터뷰 + 대본 8편</span></li><li><b>편집</b><span>자막·썸네일 포함</span></li><li><b>수정</b><span>편집 1회 + 오타 무제한</span></li></ul>` : ''}</div>`).join('')}</div>`;
+// 가격표: 위에 촬영 방식 3칸, 아래로 숏폼·롱폼 줄. 모바일에선 형식별로 세로로 쌓인다.
+const priceMatrix = () => `<div class="pm">
+  <div class="pm__tiers"><div class="pm__corner"></div>${TIERS.map(t => `<div class="pm-tier${t.pick ? ' is-pick' : ''}"><div class="pm-tier__en">${t.en}${t.pick ? ' <span>추천</span>' : ''}</div><div class="pm-tier__ko">${t.ko}</div><p class="pm-tier__who">${t.who}</p><p class="pm-tier__how">${t.how}</p>${t.ex ? `<p class="pm-tier__ex">(${t.ex})</p>` : ''}</div>`).join('')}</div>
+  ${FORMATS.map(f => `<div class="pm__fmt">
+    <div class="pm__row">
+      <div class="pm-fmt"><div class="pm-fmt__en">${f.en}</div><div class="pm-fmt__ko">${f.ko}</div><p class="pm-fmt__unit">${f.unit}</p></div>
+      ${f.prices.map((p, i) => `<div class="pm-price${TIERS[i].pick ? ' is-pick' : ''}"><div class="pm-price__tier">${TIERS[i].ko} <em>${TIERS[i].en}</em></div><div class="pm-price__num num">${p}<span>만원</span></div>${f.notes[i] ? `<p class="pm-price__note${f.notes[i].includes('서비스') ? ' is-bonus' : ''}">${f.notes[i]}</p>` : ''}</div>`).join('')}
+    </div>
+    <ul class="pm-incl">${f.incl.map(([k, v]) => `<li><b>${k}</b><span>${v}</span></li>`).join('')}</ul>
+  </div>`).join('')}
+</div>`;
 const faqList = (items) => `<div class="faq faq--home">${items.map(f => `<details class="faq__item"><summary>${esc(f.q)}</summary><p>${esc(f.a)}</p></details>`).join('')}</div>`;
 const proof = (url, img, stat, who) => `<a class="proof-card" href="${url}" target="_blank" rel="noopener"><div class="proof-card__img" style="background-image:url(/images/${img})"></div><div class="proof-card__cap"><b>${stat}</b><span>${who}</span></div></a>`;
 
@@ -289,82 +307,63 @@ const card = (p) => `<a class="post-card" href="${p.path}">
   <span class="post-card__more">읽어보기 →</span>
 </a>`;
 
-// ---------- 홈: 각 페이지의 요약 ----------
+// ---------- 홈: 대표의 이야기만 (가격·포트폴리오 없음) ----------
 {
   const ld = { '@context': 'https://schema.org', '@graph': [
     { '@type': 'WebSite', '@id': `${SITE}/#website`, name: BRAND, url: `${SITE}/`, inLanguage: 'ko-KR', publisher: { '@id': `${SITE}/#org` } },
     ORG, PERSON ] };
-  write('index.html', page({ title: `${BRAND} | 전문직과 1인 대표님을 위한 SNS 콘텐츠 기획·제작 스튜디오`, description: '전문직과 1인 대표님을 위한 SNS 콘텐츠 기획·제작 스튜디오. 인터뷰, 대본, 촬영, 편집까지 함께 해서 문의가 오는 인스타를 만듭니다. 무료 계정 분석 신청 가능.', path: '/', extra: jsonld(ld), cls: 'page--home', active: 'home' }, `
-<section class="chapter chapter--dark home-hero">
+  const ROAD = [
+    ['17년', '도시를 계획하는 일을 했어요', 'LH에서 17년 동안 도시계획 일을 했어요.<br>큰 그림을 그리고, 순서를 정하는 일이었어요.'],
+    ['퇴사 후', '나를 알리려고 부딪혔어요', '『파워루틴핏』이라는 책을 냈고,<br>SNS로 나를 알리려 여러 번 시도했어요.'],
+    ['그다음', '가게를 열고, 또 닫았어요', '온라인 쇼핑몰을 여러 개 운영하며 시장을 배웠어요.<br>힐링 스튜디오를 차렸다가 문을 닫기도 했어요.'],
+    ['작년부터', '대표님들의 콘텐츠를 만들어요', '결과가 하나씩 나오면서 알았어요.<br>잘하고, 좋아하고, 성과까지 나는 일이라는 걸요.'],
+  ];
+  const LINKS = [
+    ['도시를 계획하던 눈으로', '대표님 이야기의 순서를 잡아요.'],
+    ['나를 알리려 애써 봐서', 'SNS에서 드러나는 게 얼마나 어려운지 알아요.'],
+    ['가게를 열고 닫아 봐서', '혼자 일하는 대표님 말을 끝까지 들어요.'],
+  ];
+  write('index.html', page({ title: `${BRAND} | 대표님의 이야기를 콘텐츠로 만드는 정세연`, description: 'LH 도시계획 17년, 책 한 권, 쇼핑몰과 스튜디오. 돌고 돌아 찾은 일, 대표님의 이야기를 SNS 콘텐츠로 만드는 RE:WORK STUDIO 정세연의 이야기.', path: '/', extra: jsonld(ld), cls: 'page--home page--story', active: 'home' }, `
+<section class="chapter chapter--dark story-hero">
+  <div class="wrap story-hero__in">
+    <div>
+      <p class="story-hello" id="story-hello" hidden></p>
+      <div class="home-hero__kicker">RE:WORK STUDIO 대표 정세연</div>
+      <h1 class="story-hero__title">돌아보니,<br>허투루 보낸 날은<br><span class="hl">하루도 없었어요.</span></h1>
+      <p class="story-hero__lede">도시계획 17년, 책 한 권, 쇼핑몰 몇 개,<br class="br-m"> 문 닫은 스튜디오 하나.<br>그 길 끝에서 찾은 일을 이야기할게요.</p>
+    </div>
+    <div class="story-hero__photo" style="background-image:url(/images/img-13.jpg)" role="img" aria-label="정세연 대표"></div>
+  </div>
+  <script>(function(){var s=new URLSearchParams(location.search).get('utm_source'),m={threads:'스레드',linkedin:'링크드인'};if(m[s]){var e=document.getElementById('story-hello');e.textContent=m[s]+'에서 글 보고 오셨군요. 반가워요.';e.hidden=false;}})();</script>
+</section>
+
+<section class="chapter story-road">
   <div class="wrap">
-    <div class="home-hero__kicker">전문직과 1인 대표님을 위한 SNS 콘텐츠 기획·제작 스튜디오</div>
-    <h1 class="home-hero__title">대표님의 <span class="nb">이야기를</span><br><span class="nb"><span class="hl">문의가 오는</span></span> <span class="nb">콘텐츠로</span></h1>
-    <p class="home-hero__lede">대표님도 몰랐던 강점을 찾아, 기획부터 제작까지 함께 해요.</p>
+    <div class="eyebrow eyebrow--ko">지나온 길</div>
+    <ol class="road">${ROAD.map(([when, t, d]) => `<li><span class="road__when">${when}</span><div><h2 class="road__title">${t}</h2><p class="road__desc">${d}</p></div></li>`).join('')}</ol>
+  </div>
+</section>
+
+<section class="chapter chapter--dark story-answer">
+  <div class="wrap">
+    <p class="story-answer__q">오래 붙잡고 있던 질문이 있었어요.<br><b>20년의 경험을, 지금 하는 일과 어떻게 이을까.</b></p>
+    <p class="story-answer__a">답은 <span class="hl">거기에</span> 있었어요.</p>
+    <ul class="story-links">${LINKS.map(([a, b]) => `<li><span>${a}</span><b>${b}</b></li>`).join('')}</ul>
+  </div>
+</section>
+
+<section class="chapter story-close">
+  <div class="wrap">
+    <div class="eyebrow eyebrow--ko">이제는</div>
+    <h2 class="story-close__title">대표님의 <span class="hl">이야기</span>를<br>듣고 싶어요.</h2>
+    <p class="story-close__desc">실력은 있는데 아직 정리되지 않았을 뿐이에요.<br>그 정리부터 같이 해요.</p>
     <div class="home-hero__actions">
       <a class="btn btn--red" href="/lead">무료 계정 분석 받기</a>
-      <a class="btn btn--ghost" href="/portfolio">포트폴리오 보기</a>
+      <a class="btn btn--line" href="${KAKAO}" target="_blank" rel="noopener">카카오톡으로 편하게 묻기</a>
     </div>
-    <dl class="home-hero__proof">
-      <div><dt class="num">200만+</dt><dd>만든 콘텐츠 누적 조회수</dd></div>
-      <div><dt class="num">30팀+</dt><dd>함께한 브랜드</dd></div>
-      <div><dt class="num">17년</dt><dd>대표의 공기업 기획 경력</dd></div>
-    </dl>
+    <p class="story-close__more">어떻게 함께하는지 궁금하다면 <a href="/services">서비스 보기 →</a></p>
   </div>
 </section>
-
-<section class="chapter">
-  <div class="wrap">
-    <div class="eyebrow eyebrow--ko">이런 대표님께 맞아요</div>
-    <ul class="pain-list pain-list--3">
-      <li>매일 올리는데<br>문의가 없어요</li>
-      <li>내 일을 뭐라고<br>소개할지 모르겠어요</li>
-      <li>뭘 올려야 할지<br>막막해요</li>
-    </ul>
-  </div>
-</section>
-
-<section class="chapter chapter--dark">
-  <div class="wrap">
-    ${secHead('포트폴리오', '광고비 없이 만든 <span class="hl">결과</span>예요', ['/portfolio', '포트폴리오 전체 보기'])}
-    <div class="proof-grid">
-      ${proof('https://www.instagram.com/p/DayqhlbE3a7/', 'img-01.jpg', '댓글 8,000개', '부모교육 코치')}
-      ${proof('https://www.instagram.com/youandme_colorlab/reel/DV08MF-gbQ9/', 'img-04.jpg', '조회수 37.6만', '어린이집 원장')}
-      ${proof('https://www.instagram.com/roko_725/reel/DXEe5dXke97/', 'img-07.jpg', '조회수 30.1만', '부부관계 상담가')}
-      ${proof('https://www.instagram.com/heart.and.color_/reel/DZY9HejhhPz/', 'img-10.jpg', '조회수 25.4만', '아동 미술치료')}
-    </div>
-  </div>
-</section>
-
-<section class="chapter">
-  <div class="wrap">
-    ${secHead('서비스', '릴스 8편, <span class="hl">촬영 방법만</span> 고르세요', ['/services', '서비스 자세히 보기'])}
-    ${planCards(false)}
-    <ol class="flow-line">${STEPS.map(([t], i) => `<li><span class="num">${i + 1}</span>${t}</li>`).join('')}</ol>
-    <p class="footnote">모두 대본 · 촬영 가이드 · 편집 · 월간 리포트 포함 · VAT 별도</p>
-  </div>
-</section>
-
-<section class="chapter chapter--dim">
-  <div class="wrap">
-    ${secHead('회사 소개', '대표가 <span class="hl">직접</span> 기획해요', ['/about', '회사 소개 보기'])}
-    <div class="founder-card">
-      <div class="founder-card__photo" style="background-image:url(/images/img-13.jpg)" role="img" aria-label="정세연 대표"></div>
-      <div>
-        <div class="founder-card__name">정세연 <span>RE:WORK STUDIO 대표</span></div>
-        <p>LH공사에서 17년 동안 기획 일을 했어요.<br>지금은 대표님들의 이야기를 인스타 콘텐츠로 만들어요.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-${posts.length ? `<section class="chapter">
-  <div class="wrap">
-    ${secHead('블로그', '인스타 고민, 쉽게 풀어 드려요', ['/insights', '글 전체 보기'])}
-    <div class="post-grid post-grid--compact">${posts.slice(0, 3).map(card).join('')}</div>
-  </div>
-</section>` : ''}
-
-${finalCta()}
 `));
 }
 
@@ -434,13 +433,13 @@ ${finalCta()}
 
 // ---------- 서비스 ----------
 {
-  const offers = PLANS.map(p => ({ '@type': 'Offer', name: `${p.ko} (${p.en}) · 릴스 8편`, price: String(p.price * 10000), priceCurrency: 'KRW' }));
+  const offers = FORMATS.flatMap(f => TIERS.map((t, i) => ({ '@type': 'Offer', name: `${f.ko} ${f.unit} · ${t.ko} (${t.en})`, price: String(f.prices[i] * 10000), priceCurrency: 'KRW' })));
   const ld = { '@context': 'https://schema.org', '@graph': [
     { '@type': 'Service', name: '인스타 릴스 콘텐츠 제작', provider: { '@id': `${SITE}/#org` }, areaServed: 'KR', offers },
     { '@type': 'FAQPage', mainEntity: FAQ.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
     ORG ] };
-  write('services/index.html', page({ title: `서비스와 가격 | 릴스 8편 100·220·300만원 | ${BRAND}`, description: '인터뷰, 대본 8편, 촬영, 편집, 월간 리포트까지. 직접 촬영 100만원, 방문 촬영 220만원, 세팅 촬영 300만원(VAT 별도). 진행 순서와 자주 묻는 질문.', path: '/services', extra: jsonld(ld), cls: 'page--sub', active: 'services' }, `
-${subHero('서비스', '릴스 8편을<br><span>기획부터 편집까지</span> 만들어 드려요.', '무엇을 어떤 순서로 말할지 정하는 것부터 저희가 해요.')}
+  write('services/index.html', page({ title: `서비스와 가격 | 숏폼·롱폼 100·220·300만원 | ${BRAND}`, description: '숏폼(릴스 8편)과 롱폼(10분 내외 4편)을 같은 가격으로. 직접 촬영 100만원, 인터뷰 촬영 220만원, 현장·특수 촬영 300만원(VAT 별도). 진행 순서와 자주 묻는 질문.', path: '/services', extra: jsonld(ld), cls: 'page--sub', active: 'services' }, `
+${subHero('서비스', '숏폼도, 롱폼도<br><span>같은 가격</span>이에요.', '촬영 방식과 형식만 고르세요. 무엇을 어떤 순서로 말할지는 저희가 같이 정해요.')}
 
 <section class="chapter">
   <div class="wrap">
@@ -451,9 +450,9 @@ ${subHero('서비스', '릴스 8편을<br><span>기획부터 편집까지</span>
 
 <section class="chapter chapter--dim" id="price">
   <div class="wrap">
-    ${secHead('가격', '촬영 방법만 <span class="hl">고르세요</span>')}
-    ${planCards(true)}
-    <p class="footnote">세 가지 모두 인터뷰 · 대본 8편 · 장면별 촬영 가이드 · 편집(자막·썸네일) · 월 1회 리포트가 들어 있어요.</p>
+    ${secHead('가격', '촬영 방식 × <span class="hl">숏폼·롱폼</span>')}
+    ${priceMatrix()}
+    <p class="footnote">VAT 별도 · 진행 기간과 업로드 대행 여부는 계약 전에 협의해요.</p>
   </div>
 </section>
 

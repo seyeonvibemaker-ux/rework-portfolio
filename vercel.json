@@ -39,6 +39,11 @@
       "permanent": false
     },
     {
+      "source": "/linkedin",
+      "destination": "/?utm_source=linkedin&utm_medium=profile",
+      "permanent": false
+    },
+    {
       "source": "/naver",
       "destination": "/?utm_source=naver_blog&utm_medium=post",
       "permanent": false
