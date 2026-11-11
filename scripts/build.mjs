@@ -96,20 +96,21 @@ const TIERS = [
   { en: 'Premium', ko: '현장·특수 촬영', who: 'PD 2회 촬영', how: '인터뷰 외 형식 · 현장 세팅 + B롤', ex: '예: 수업·시술 현장, 제품 시연, 공간 투어' },
 ];
 const FORMATS = [
-  { en: 'Short-form', ko: '숏폼', unit: '릴스 8편', prices: [100, 220, 300], notes: ['', '', ''],
+  { en: 'Short-form', ko: '숏폼', unit: '릴스 8편', sub: '', prices: [100, 220, 300], notes: ['', '', ''],
     incl: [['기획', '인터뷰 · 대본 8편'], ['촬영', '장면별 촬영 가이드'], ['편집', '자막 · 썸네일'], ['수정', '편집 1회 · 오타 무제한']] },
-  { en: 'Long-form', ko: '롱폼', unit: '4편 · 편당 10분 내외', prices: [100, 220, 300], notes: ['숏폼 클립 별도 · 개당 5만원', '숏폼 클립 8개 서비스', '숏폼 클립 8개 서비스'],
-    incl: [['기획', '인터뷰 · 구성안·대본 4편'], ['촬영', '장면별 촬영 가이드'], ['편집', '컷편집 · 자막 · 챕터<br>썸네일 · 제목·설명란'], ['수정', '편집 1회 · 오타 무제한']] },
+  { en: 'Long-form', ko: '롱폼', unit: '영상 4편', sub: '편당 10분 내외', prices: [100, 220, 300], notes: ['숏폼 클립 별도 · 개당 5만원', '숏폼 클립 8개 서비스', '숏폼 클립 8개 서비스'],
+    incl: [['기획', '인터뷰 · 구성안·대본 4편'], ['촬영', '장면별 촬영 가이드'], ['편집', '컷편집 · 자막 · 챕터 <br>썸네일 · 제목·설명란'], ['수정', '편집 1회 · 오타 무제한']] },
 ];
 const ADDONS = [
   { name: '카드뉴스', price: '2만원', unit: '1장' },
-  { name: '블로그 새로 기획', price: '100만원', unit: '4편' },
+  { name: '블로그 기획', price: '100만원', unit: '4편' },
   { name: 'SNS 디자인 기본 세팅', price: '50만원', unit: '' },
   { name: '홈페이지', price: '100만원', unit: '+ 월 5만원' },
 ];
 const STEPS = [
   ['무료 계정 분석', '계정을 살펴보고 3영업일 안에 리포트를 보내 드려요'],
-  ['강점 찾기', '인터뷰로 대표님도 몰랐던 강점을 찾아요'],
+  ['정식 인터뷰', '인터뷰로 대표님도 몰랐던 강점을 찾아요'],
+  ['기획', '무엇을 어떤 순서로 말할지 정해요'],
   ['대본', '고객이 바로 알아듣는 말로 대본을 써요'],
   ['촬영·편집', '직접 또는 PD 방문으로 찍고, 자막·썸네일까지 편집해요'],
   ['월간 리포트', '조회수와 팔로워 변화를 매달 정리해 드려요'],
@@ -190,7 +191,7 @@ function footer() {
     <div class="site-foot__top">
       <div>
         <div class="site-foot__brand">RE:WORK STUDIO</div>
-        <p class="site-foot__desc">전문직과 1인 대표님을 위한<br>SNS 콘텐츠 기획·제작 스튜디오</p>
+        <p class="site-foot__desc">전문직과 1인 대표님을 위한 <br>SNS 콘텐츠 기획·제작 스튜디오</p>
       </div>
       <nav class="site-foot__links" aria-label="하단 메뉴">
         <a href="/about">회사 소개</a><a href="/services">서비스</a><a href="/portfolio">포트폴리오</a><a href="/insights">블로그</a><a href="/lead">무료 계정 분석</a>
@@ -209,14 +210,14 @@ function footer() {
 </footer>`;
 }
 
-function finalCta(title = '먼저 무료로<br><span class="line2">내 계정 분석부터 받아 보세요.</span>') {
-  return `<section class="chapter chapter--dark home-final">
+function finalCta(title = '먼저 무료로 계정 분석부터 받아 보세요') {
+  return `<section class="chapter page-cta">
   <div class="wrap">
     <h2 class="closing-head">${title}</h2>
     <p class="home-final__desc">3영업일 안에 리포트로 보내 드려요.</p>
     <div class="home-hero__actions">
-      <a class="btn btn--red" href="/lead">무료 계정 분석 받기</a>
-      <a class="btn btn--ghost" href="${KAKAO}" target="_blank" rel="noopener">카카오톡으로 물어보기</a>
+      <a class="btn btn--ink" href="/lead">무료 계정 분석 받기</a>
+      <a class="btn btn--line" href="${KAKAO}" target="_blank" rel="noopener">카카오톡으로 물어보기</a>
     </div>
   </div>
 </section>`;
@@ -230,19 +231,20 @@ function ctaBand() {
       <p class="cta-band__title">내 계정은 왜 문의가 없을까요?</p>
       <p class="cta-band__desc">무료로 살펴보고, 3영업일 안에 리포트로 알려 드려요.</p>
     </div>
-    <a class="btn btn--red" href="/lead">무료 계정 분석 받기</a>
+    <a class="btn btn--ink" href="/lead">무료 계정 분석 받기</a>
   </div>
 </section>`;
 }
 
 const secHead = (eyebrow, title, more) => `<div class="sec-head"><div><div class="eyebrow eyebrow--ko">${eyebrow}</div><h2 class="headline">${title}</h2></div>${more ? `<a class="more-link" href="${more[0]}">${more[1]} →</a>` : ''}</div>`;
-const subHero = (eyebrow, title, lede) => `<section class="chapter chapter--dark sub-hero"><div class="wrap"><div class="eyebrow eyebrow--ko">${eyebrow}</div><h1 class="sub-hero__title">${title}</h1>${lede ? `<p class="sub-hero__lede">${lede}</p>` : ''}</div></section>`;
+// 하위 페이지 머리: 슬로건 없이 페이지 이름 + 한 줄 설명
+const subHero = (title, lede) => `<section class="sub-head"><div class="wrap"><h1 class="sub-head__title">${title}</h1>${lede ? `<p class="sub-head__lede">${lede}</p>` : ''}</div></section>`;
 // 가격표: 위에 촬영 방식 3칸, 아래로 숏폼·롱폼 줄. 모바일에선 형식별로 세로로 쌓인다.
 const priceMatrix = () => `<div class="pm">
   <div class="pm__tiers"><div class="pm__corner"></div>${TIERS.map(t => `<div class="pm-tier${t.pick ? ' is-pick' : ''}"><div class="pm-tier__en">${t.en}${t.pick ? ' <span>추천</span>' : ''}</div><div class="pm-tier__ko">${t.ko}</div><p class="pm-tier__who">${t.who}</p><p class="pm-tier__how">${t.how}</p>${t.ex ? `<p class="pm-tier__ex">(${t.ex})</p>` : ''}</div>`).join('')}</div>
   ${FORMATS.map(f => `<div class="pm__fmt">
     <div class="pm__row">
-      <div class="pm-fmt"><div class="pm-fmt__en">${f.en}</div><div class="pm-fmt__ko">${f.ko}</div><p class="pm-fmt__unit">${f.unit}</p></div>
+      <div class="pm-fmt"><div class="pm-fmt__en">${f.en}</div><div class="pm-fmt__ko">${f.ko}</div><p class="pm-fmt__unit">${f.unit}</p>${f.sub ? `<p class="pm-fmt__sub">${f.sub}</p>` : ''}</div>
       ${f.prices.map((p, i) => `<div class="pm-price${TIERS[i].pick ? ' is-pick' : ''}"><div class="pm-price__tier">${TIERS[i].ko} <em>${TIERS[i].en}</em></div><div class="pm-price__num num">${p}<span>만원</span></div>${f.notes[i] ? `<p class="pm-price__note${f.notes[i].includes('서비스') ? ' is-bonus' : ''}">${f.notes[i]}</p>` : ''}</div>`).join('')}
     </div>
     <ul class="pm-incl">${f.incl.map(([k, v]) => `<li><b>${k}</b><span>${v}</span></li>`).join('')}</ul>
@@ -271,7 +273,7 @@ const PERSON = {
   '@id': `${SITE}/#founder`,
   name: AUTHOR,
   jobTitle: 'RE:WORK STUDIO 대표',
-  description: 'LH공사에서 17년 동안 기획 일을 했고, 30팀 넘는 브랜드의 인스타 콘텐츠를 기획했습니다. 『파워루틴핏』 저자.',
+  description: 'LH공사에서 16년 넘게 도시계획 일을 했고, 책을 쓰고 온라인 쇼핑몰과 창업을 거쳐 지금은 대표님들의 이야기를 SNS 콘텐츠로 만듭니다.',
   worksFor: { '@id': `${SITE}/#org` },
   url: `${SITE}/about`,
   sameAs: [INSTA],
@@ -307,74 +309,57 @@ const card = (p) => `<a class="post-card" href="${p.path}">
   <span class="post-card__more">읽어보기 →</span>
 </a>`;
 
-// ---------- 홈: 대표의 이야기만 (가격·포트폴리오 없음) ----------
+// ---------- 홈: 편지처럼 — 대표가 직접 건네는 인사 (가격·포트폴리오 없음) ----------
+// 레퍼런스: sive.rs, austinkleon.com — 1인칭 자기소개로 시작, 블록 대신 이어지는 글, 연락은 한 문장으로.
 {
   const ld = { '@context': 'https://schema.org', '@graph': [
     { '@type': 'WebSite', '@id': `${SITE}/#website`, name: BRAND, url: `${SITE}/`, inLanguage: 'ko-KR', publisher: { '@id': `${SITE}/#org` } },
     ORG, PERSON ] };
-  const ROAD = [
-    ['17년', '도시를 계획하는 일을 했어요', 'LH에서 17년 동안 도시계획 일을 했어요.<br>큰 그림을 그리고, 순서를 정하는 일이었어요.'],
-    ['퇴사 후', '나를 알리려고 부딪혔어요', '『파워루틴핏』이라는 책을 냈고,<br>SNS로 나를 알리려 여러 번 시도했어요.'],
-    ['그다음', '가게를 열고, 또 닫았어요', '온라인 쇼핑몰을 여러 개 운영하며 시장을 배웠어요.<br>힐링 스튜디오를 차렸다가 문을 닫기도 했어요.'],
-    ['작년부터', '대표님들의 콘텐츠를 만들어요', '결과가 하나씩 나오면서 알았어요.<br>잘하고, 좋아하고, 성과까지 나는 일이라는 걸요.'],
-  ];
-  const LINKS = [
-    ['도시를 계획하던 눈으로', '대표님 이야기의 순서를 잡아요.'],
-    ['나를 알리려 애써 봐서', 'SNS에서 드러나는 게 얼마나 어려운지 알아요.'],
-    ['가게를 열고 닫아 봐서', '혼자 일하는 대표님 말을 끝까지 들어요.'],
-  ];
-  write('index.html', page({ title: `${BRAND} | 대표님의 이야기를 콘텐츠로 만드는 정세연`, description: 'LH 도시계획 17년, 책 한 권, 쇼핑몰과 스튜디오. 돌고 돌아 찾은 일, 대표님의 이야기를 SNS 콘텐츠로 만드는 RE:WORK STUDIO 정세연의 이야기.', path: '/', extra: jsonld(ld), cls: 'page--home page--story', active: 'home' }, `
-<section class="chapter chapter--dark story-hero">
-  <div class="wrap story-hero__in">
-    <div>
-      <p class="story-hello" id="story-hello" hidden></p>
-      <div class="home-hero__kicker">RE:WORK STUDIO 대표 정세연</div>
-      <h1 class="story-hero__title">돌아보니,<br>허투루 보낸 날은<br><span class="hl">하루도 없었어요.</span></h1>
-      <p class="story-hero__lede">도시계획 17년, 책 한 권, 쇼핑몰 몇 개,<br class="br-m"> 문 닫은 스튜디오 하나.<br>그 길 끝에서 찾은 일을 이야기할게요.</p>
+  write('index.html', page({ title: `${BRAND} | 정세연`, description: '안녕하세요, 정세연입니다. 대표님과 대화하고, 알아가고, 하시는 일을 이해한 다음에 콘텐츠를 만들어요.', path: '/', extra: jsonld(ld), cls: 'page--home page--letter', active: 'home' }, `
+<section class="letter">
+  <div class="letter__in">
+    <p class="story-hello" id="story-hello" hidden></p>
+    <div class="letter__photo" style="background-image:url(/images/profile-03.jpg)" role="img" aria-label="정세연 대표"></div>
+    <h1 class="letter__hi">안녕하세요, <br>정세연입니다.</h1>
+
+    <div class="letter__body">
+      <p>저는 대표님들과 이야기 나누는 걸 좋아해요. <br>하시는 일 이야기부터, 살아오신 이야기까지요.</p>
+      <p>어떤 고객을 만나시는지, 어떻게 이 일을 시작하게 되셨는지, <br>그동안 어떤 길을 걸어오셨는지. <br>그렇게 이야기를 나누다 보면 대표님 일이 조금씩 보여요.</p>
+      <p>콘텐츠는 그다음이에요. <br>하시는 일을 제가 충분히 이해했다고 느낄 때 만들기 시작해요.</p>
+      <p>저도 지나 보니 많은 경험을 했네요. <br>16년 넘게 회사에 다니다 나와서 책을 쓰고, <br>SNS로 저를 알려 보고, 온라인 쇼핑몰도 하고, 직접 창업도 해 봤어요. <br>그래서 대표님들의 이야기가 남 일 같지 않아요.</p>
+      <p>대화하고, 알아가고, 업을 이해하는 것. <br><strong>제가 제일 잘하는 일이에요.</strong></p>
     </div>
-    <div class="story-hero__photo" style="background-image:url(/images/img-13.jpg)" role="img" aria-label="정세연 대표"></div>
+
+    <div class="letter__now">
+      <h2 class="letter__label">요즘은</h2>
+      <p>대표님, 상담사, 원장님, 코치님들과 이야기를 나누고 <br>그 이야기를 릴스와 영상으로 만들고 있어요.</p>
+    </div>
+
+    ${posts.length ? `<div class="letter__now">
+      <h2 class="letter__label">최근에 쓴 글</h2>
+      <ul class="letter__posts">${posts.slice(0, 3).map(p => `<li><a href="${p.path}">${esc(p.title)}</a><time datetime="${p.date}">${fmtDate(p.date)}</time></li>`).join('')}</ul>
+    </div>` : ''}
+
+    <div class="letter__end">
+      <p>대표님 이야기도 듣고 싶어요. <br>정리되지 않은 상태 그대로 괜찮아요.</p>
+      <p><a href="${KAKAO}" target="_blank" rel="noopener">카카오톡으로 편하게 말 걸어 주세요</a>. 제가 직접 답변드릴게요. <br>계정부터 봐 드리길 원하시면 <a href="/lead">무료 계정 분석</a>을 신청해 주셔도 좋아요.</p>
+      <p class="letter__sign">정세연 <span>RE:WORK STUDIO</span></p>
+    </div>
+
   </div>
   <script>(function(){var s=new URLSearchParams(location.search).get('utm_source'),m={threads:'스레드',linkedin:'링크드인'};if(m[s]){var e=document.getElementById('story-hello');e.textContent=m[s]+'에서 글 보고 오셨군요. 반가워요.';e.hidden=false;}})();</script>
-</section>
-
-<section class="chapter story-road">
-  <div class="wrap">
-    <div class="eyebrow eyebrow--ko">지나온 길</div>
-    <ol class="road">${ROAD.map(([when, t, d]) => `<li><span class="road__when">${when}</span><div><h2 class="road__title">${t}</h2><p class="road__desc">${d}</p></div></li>`).join('')}</ol>
-  </div>
-</section>
-
-<section class="chapter chapter--dark story-answer">
-  <div class="wrap">
-    <p class="story-answer__q">오래 붙잡고 있던 질문이 있었어요.<br><b>20년의 경험을, 지금 하는 일과 어떻게 이을까.</b></p>
-    <p class="story-answer__a">답은 <span class="hl">거기에</span> 있었어요.</p>
-    <ul class="story-links">${LINKS.map(([a, b]) => `<li><span>${a}</span><b>${b}</b></li>`).join('')}</ul>
-  </div>
-</section>
-
-<section class="chapter story-close">
-  <div class="wrap">
-    <div class="eyebrow eyebrow--ko">이제는</div>
-    <h2 class="story-close__title">대표님의 <span class="hl">이야기</span>를<br>듣고 싶어요.</h2>
-    <p class="story-close__desc">실력은 있는데 아직 정리되지 않았을 뿐이에요.<br>그 정리부터 같이 해요.</p>
-    <div class="home-hero__actions">
-      <a class="btn btn--red" href="/lead">무료 계정 분석 받기</a>
-      <a class="btn btn--line" href="${KAKAO}" target="_blank" rel="noopener">카카오톡으로 편하게 묻기</a>
-    </div>
-    <p class="story-close__more">어떻게 함께하는지 궁금하다면 <a href="/services">서비스 보기 →</a></p>
-  </div>
 </section>
 `));
 }
 
 // ---------- 회사 소개 ----------
 write('about/index.html', page({ title: `회사 소개 | ${BRAND}`, description: 'RE:WORK STUDIO는 전문직과 1인 대표님을 위한 SNS 콘텐츠 기획·제작 스튜디오예요. 대표 정세연과 함께한 브랜드를 소개합니다.', path: '/about', extra: jsonld({ '@context': 'https://schema.org', '@graph': [ORG, PERSON] }), cls: 'page--sub', active: 'about' }, `
-${subHero('회사 소개', '대표님의 이야기를<br><span>콘텐츠로</span> 만드는 회사예요.', '전문직과 1인 대표님 중, 실력은 있는데 SNS에서 잘 알려지지 않은 분들과 일해요.')}
+${subHero('회사 소개', '전문직과 1인 대표님 중, 실력은 있는데 SNS에서 잘 알려지지 않은 분들과 일해요.')}
 
 <section class="chapter">
   <div class="wrap">
     <div class="eyebrow eyebrow--ko">저희가 믿는 것</div>
-    <p class="belief">설명만 하는 계정은 스쳐 지나가고,<br><span>이야기가 있는 계정</span>이 기억에 남아요.</p>
+    <p class="belief">설명만 하는 계정은 스쳐 지나가고, <br><span>이야기가 있는 계정</span>이 기억에 남아요.</p>
     <p class="subhead">정보는 검색하면 나와요. 사람들이 찾아오는 건 그 정보를 말하는 사람의 이야기예요.</p>
   </div>
 </section>
@@ -390,33 +375,30 @@ ${subHero('회사 소개', '대표님의 이야기를<br><span>콘텐츠로</spa
   </div>
 </section>
 
-<section class="chapter chapter--dark founder-chapter">
-  <div class="founder-bg" style="background-image:url(/images/img-13.jpg)"></div>
-  <div class="founder-bg founder-bg--m" style="background-image:url(/images/img-14.jpg)"></div>
+<section class="chapter">
   <div class="wrap">
-    <div class="founder-row"><div>
-      <div class="eyebrow eyebrow--ko">대표 소개</div>
-      <div class="founder-name">정세연</div>
-      <div class="founder-quote">“브랜딩은 결국 이야기예요.”</div>
-      <div class="founder-stats">
-        <div class="stat"><div class="stat-num num">17년</div><div class="stat-label">LH공사<br>기획 업무</div></div>
-        <div class="stat"><div class="stat-num num">30팀+</div><div class="stat-label">기획을 맡은<br>브랜드</div></div>
-        <div class="stat"><div class="stat-num num">7팀</div><div class="stat-label">지금 함께하는<br>대표님</div></div>
-        <div class="stat"><div class="stat-num num">200만+</div><div class="stat-label">만든 콘텐츠<br>누적 조회수</div></div>
+    <div class="eyebrow eyebrow--ko">대표 소개</div>
+    <div class="founder-story">
+      <div class="founder-story__photo" style="background-image:url(/images/profile-02.jpg)" role="img" aria-label="정세연 대표"></div>
+      <div class="founder-story__text">
+        <p>LH공사에서 16년 넘게 도시계획 일을 했어요.</p>
+        <p>회사를 나와서는 하나씩 부딪혀 봤어요. <br>책을 썼고, 저를 알리고 싶어서 SNS를 붙잡고 여러 번 시도했어요. <br>온라인 쇼핑몰을 몇 곳 운영하면서 온라인 시장을 배웠고, <br>힐링 스튜디오를 열었다가 문을 닫기도 했어요.</p>
+        <p>이 경험들을 어떻게 이어야 할지 오래 고민했어요. <br>그런데 돌아보니, 허투루 보낸 날은 하루도 없었더라고요.</p>
+        <p>지금은 대표님들과 이야기를 나누고, 그 이야기를 콘텐츠로 만들어요. <br>잘하고, 좋아하고, 결과까지 나는 일을 이제야 찾은 것 같아요.</p>
+        <p class="founder-story__sign">정세연 <span>RE:WORK STUDIO 대표</span></p>
       </div>
-      <p class="founder-plain">『파워루틴핏』을 썼어요.</p>
-    </div></div>
+    </div>
   </div>
 </section>
 
-<section class="chapter">
+<section class="chapter chapter--dim">
   <div class="wrap">
     ${secHead('함께한 브랜드', '이런 분들과 <span class="hl">함께했어요</span>', ['/portfolio', '포트폴리오 보기'])}
     <ul class="brand-list">${BRANDS.map(([n, d]) => `<li><b>${n}</b><span>${d}</span></li>`).join('')}</ul>
   </div>
 </section>
 
-<section class="chapter chapter--dim">
+<section class="chapter">
   <div class="wrap">
     <div class="eyebrow eyebrow--ko">연락처</div>
     <ul class="contact-list">
@@ -439,12 +421,12 @@ ${finalCta()}
     { '@type': 'FAQPage', mainEntity: FAQ.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
     ORG ] };
   write('services/index.html', page({ title: `서비스와 가격 | 숏폼·롱폼 100·220·300만원 | ${BRAND}`, description: '숏폼(릴스 8편)과 롱폼(10분 내외 4편)을 같은 가격으로. 직접 촬영 100만원, 인터뷰 촬영 220만원, 현장·특수 촬영 300만원(VAT 별도). 진행 순서와 자주 묻는 질문.', path: '/services', extra: jsonld(ld), cls: 'page--sub', active: 'services' }, `
-${subHero('서비스', '숏폼도, 롱폼도<br><span>같은 가격</span>이에요.', '촬영 방식과 형식만 고르세요. 무엇을 어떤 순서로 말할지는 저희가 같이 정해요.')}
+${subHero('서비스와 가격', '촬영 방식과 형식(숏폼·롱폼)을 고르시면, 기획부터 편집까지 함께 해요.')}
 
 <section class="chapter">
   <div class="wrap">
     ${secHead('진행 순서', '이렇게 진행해요')}
-    <ol class="flow">${STEPS.map(([t, d], i) => `<li><span class="flow__no num">${String(i + 1).padStart(2, '0')}</span><b>${t}</b><p>${d}</p></li>`).join('')}</ol>
+    <ol class="flowchart">${STEPS.map(([t], i) => `<li><span class="flowchart__no num">${i + 1}</span><b>${t}</b></li>`).join('')}</ol>
   </div>
 </section>
 
@@ -459,8 +441,8 @@ ${subHero('서비스', '숏폼도, 롱폼도<br><span>같은 가격</span>이에
 <section class="chapter">
   <div class="wrap">
     ${secHead('추가 상품', '필요한 것만 <span class="hl">더할 수</span> 있어요')}
-    <ul class="addon-list">${ADDONS.map(a => `<li><b>${a.name}</b><span class="num">${a.price}</span><em>${a.unit}</em></li>`).join('')}</ul>
-    <p class="footnote">가격은 2026년 9월 기준이고 VAT 별도예요. 진행 기간과 업로드 대행 여부는 계약 전에 정해요.</p>
+    <ul class="addon-list addon-list--ask">${ADDONS.map(a => `<li><b>${a.name}</b><em>별도 문의</em></li>`).join('')}</ul>
+    <p class="footnote">추가 상품 가격은 <a href="${KAKAO}" target="_blank" rel="noopener">카카오톡으로</a> 편하게 물어봐 주세요.</p>
   </div>
 </section>
 
@@ -471,7 +453,7 @@ ${subHero('서비스', '숏폼도, 롱폼도<br><span>같은 가격</span>이에
   </div>
 </section>
 
-${finalCta('어떤 구성이 맞을지 모르겠다면<br><span class="line2">무료 분석부터 받아 보세요.</span>')}
+${finalCta('어떤 구성이 맞을지 모르겠다면, 무료 분석부터 받아 보세요')}
 `));
 }
 
@@ -479,22 +461,21 @@ ${finalCta('어떤 구성이 맞을지 모르겠다면<br><span class="line2">�
 {
   const cases = readFileSync(join(ROOT, 'content', 'partials', 'work-cases.html'), 'utf8');
   write('portfolio/index.html', page({ title: `포트폴리오 | 광고 없이 만든 인스타 콘텐츠 | ${BRAND}`, description: '부모교육 코치, 어린이집 원장, 부부관계 상담가, 아동 미술치료 대표님과 만든 릴스·카드뉴스. 광고 없이 누적 조회수 200만+.', path: '/portfolio', extra: jsonld({ '@context': 'https://schema.org', '@graph': [ORG] }), cls: 'page--sub page--work', active: 'portfolio' }, `
-${subHero('포트폴리오', '광고비 없이 만든<br><span>결과</span>예요.', '모두 대표님 이야기로 만든 콘텐츠예요. 카드를 누르면 실제 게시물로 가요.')}
+${subHero('포트폴리오', '단순 조회수가 아니라, 팬이 생기고 실제 매출로 이어지는 콘텐츠를 만들어요.')}
 
 <section class="chapter">
   <div class="wrap">
     <div class="stat-row stat-row--plain">
-      <div class="stat"><div class="stat-num num">200만+</div><div class="stat-label">만든 콘텐츠<br>누적 조회수</div></div>
-      <div class="stat"><div class="stat-num num">3천+</div><div class="stat-label">릴스 1편<br>최고 댓글 수</div></div>
-      <div class="stat"><div class="stat-num num">약 8천</div><div class="stat-label">카드뉴스 1편<br>최고 댓글 수</div></div>
-      <div class="stat"><div class="stat-num num">3천+</div><div class="stat-label">카드뉴스 1편 뒤<br>늘어난 팔로워</div></div>
+      <div class="stat"><div class="stat-num num">200만+</div><div class="stat-label">만든 콘텐츠 <br>누적 조회수</div></div>
+      <div class="stat"><div class="stat-num num">3천+</div><div class="stat-label">릴스 1편 <br>최고 댓글 수</div></div>
+      <div class="stat"><div class="stat-num num">약 8천</div><div class="stat-label">카드뉴스 1편 <br>최고 댓글 수</div></div>
+      <div class="stat"><div class="stat-num num">3천+</div><div class="stat-label">카드뉴스 1편 뒤 <br>늘어난 팔로워</div></div>
     </div>
-    <p class="footnote">2026년 9월까지 만든 콘텐츠 기준이에요. 아래는 대표 콘텐츠 12편이고, 조회수는 5만이 넘는 것만 적었어요.</p>
     ${cases}
   </div>
 </section>
 
-${finalCta('다음 사례는<br><span class="line2">대표님 계정일 수 있어요.</span>')}
+${finalCta('대표님 계정도 함께 살펴볼게요')}
 `));
 }
 
@@ -542,7 +523,7 @@ ${p.html}
       <div class="author-box__photo" style="background-image:url(/images/img-13.jpg)" role="img" aria-label="정세연 대표 사진"></div>
       <div>
         <div class="author-box__name">${AUTHOR} <span>RE:WORK STUDIO 대표</span></div>
-        <p>LH공사에서 17년 동안 기획 일을 했어요. 지금은 대표님들의 이야기를 인스타 콘텐츠로 만들어요.</p>
+        <p>LH공사에서 16년 넘게 일했어요. 지금은 대표님들의 이야기를 콘텐츠로 만들어요.</p>
         <a href="/about">회사 소개 보기 →</a>
       </div>
     </aside>
@@ -572,11 +553,11 @@ ${readFileSync(join(ROOT, 'content', 'partials', 'privacy.html'), 'utf8')}
 `));
 
 // ---------- 블로그 목록 ----------
-write('insights/index.html', page({ title: `블로그 | 인스타·브랜딩 고민을 쉽게 풀어 드려요 | ${BRAND}`, description: '코치·상담사·원장님의 인스타·브랜딩 고민을 쉬운 말로 풀어 드려요. 연구와 공식 자료를 근거로, 바로 해 볼 수 있는 방법만 담았어요.', path: '/insights', cls: 'page--sub', active: 'insights',
+write('insights/index.html', page({ title: `블로그 | 콘텐츠·브랜딩 고민을 쉽게 풀어 드려요 | ${BRAND}`, description: '코치·상담사·원장님의 인스타·브랜딩 고민을 쉬운 말로 풀어 드려요. 연구와 공식 자료를 근거로, 바로 해 볼 수 있는 방법만 담았어요.', path: '/insights', cls: 'page--sub', active: 'insights',
   extra: jsonld({ '@context': 'https://schema.org', '@graph': [
     { '@type': 'Blog', '@id': `${SITE}/insights#blog`, name: `${BRAND} 블로그`, url: `${SITE}/insights`, inLanguage: 'ko-KR', publisher: { '@id': `${SITE}/#org` },
       blogPost: posts.map(p => ({ '@type': 'BlogPosting', headline: p.title, url: `${SITE}${p.path}`, datePublished: p.date })) }, ORG, PERSON ] }) }, `
-${subHero('블로그', '인스타 고민,<br><span>쉽게 풀어 드려요.</span>', '연구와 공식 자료를 바탕으로, 바로 해 볼 수 있는 방법만 담았어요.')}
+${subHero('블로그', '콘텐츠와 브랜딩 고민을, 연구와 공식 자료를 바탕으로 쉽게 풀어 드려요.')}
 <section class="chapter">
   <div class="wrap">
     ${posts.length ? `<div class="post-grid">${posts.map(card).join('')}</div>` : '<p class="empty">첫 글을 준비하고 있어요.</p>'}

@@ -26,7 +26,7 @@ var form = document.getElementById('f');
     msg.innerHTML = '접수 중 문제가 생겼어요. <a href="https://pf.kakao.com/_xdxjbCX" target="_blank" rel="noopener">카카오톡 채널</a>로 남겨주시면 바로 확인하겠습니다.';
     msg.style.display = 'block';
     btn.disabled = false;
-    btn.textContent = '무료 상담 신청하기';
+    btn.textContent = '무료 계정 분석 신청하기';
   }
 
   sink.addEventListener('load', function () { if (sent) succeed(); });
