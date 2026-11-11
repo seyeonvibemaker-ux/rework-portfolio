@@ -109,3 +109,5 @@ button:hover{background:var(--black);}
 .kakao:hover{background:var(--black);}
 .help{font-size:13.5px;}
 .lead-head__body p{margin:0;}
+.src-other{margin-top:12px;}
+.src-other .help{display:block;}

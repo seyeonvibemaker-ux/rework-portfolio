@@ -31,7 +31,19 @@ var form = document.getElementById('f');
 
   sink.addEventListener('load', function () { if (sent) succeed(); });
 
+  // 어떻게 알고 오셨나요: '기타'를 고르면 직접 적는 칸을 보여 준다 (적는 건 선택)
+  var src = document.getElementById('src');
+  var srcOther = document.getElementById('src-other');
+  var srcWrap = document.getElementById('src-other-wrap');
+  srcWrap.hidden = true;
+  src.addEventListener('change', function () {
+    srcWrap.hidden = src.value !== '__other_option__';
+    if (!srcWrap.hidden) srcOther.focus();
+  });
+
   form.addEventListener('submit', function () {
+    // 구글폼은 '기타'를 고르고 칸을 비우면 접수를 거절한다. 비어 있으면 '기타'로 채운다.
+    if (src.value === '__other_option__' && !srcOther.value.trim()) srcOther.value = '기타';
     sent = true;
     btn.disabled = true;
     btn.textContent = '보내는 중...';

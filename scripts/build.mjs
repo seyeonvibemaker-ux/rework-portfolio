@@ -461,7 +461,7 @@ ${finalCta('어떤 구성이 맞을지 모르겠다면, 무료 분석부터 받�
 {
   const cases = readFileSync(join(ROOT, 'content', 'partials', 'work-cases.html'), 'utf8');
   write('portfolio/index.html', page({ title: `포트폴리오 | 광고 없이 만든 인스타 콘텐츠 | ${BRAND}`, description: '부모교육 코치, 어린이집 원장, 부부관계 상담가, 아동 미술치료 대표님과 만든 릴스·카드뉴스. 광고 없이 누적 조회수 200만+.', path: '/portfolio', extra: jsonld({ '@context': 'https://schema.org', '@graph': [ORG] }), cls: 'page--sub page--work', active: 'portfolio' }, `
-${subHero('포트폴리오', '단순 조회수가 아니라, 팬이 생기고 실제 매출로 이어지는 콘텐츠를 만들어요.')}
+${subHero('포트폴리오', '단순 조회수가 아니라, <br>팬이 생기고 실제 매출로 이어지는 <br>콘텐츠를 만듭니다.')}
 
 <section class="chapter">
   <div class="wrap">
